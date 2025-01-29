@@ -15,15 +15,16 @@ describe('User Entity', () => {
     expect(user.name).toBe(userData.name);
   });
 
-  it('should allow partial properties', () => {
+  it('should create instance without id provided', () => {
     const userData = {
       email: 'test@example.com',
+      name: 'Test User',
     };
 
     const user = new User(userData);
 
     expect(user.email).toBe(userData.email);
+    expect(user.name).toBe(userData.name);
     expect(user.id).toBeUndefined();
-    expect(user.name).toBeUndefined();
   });
 });
