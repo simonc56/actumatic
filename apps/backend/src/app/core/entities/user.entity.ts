@@ -3,7 +3,7 @@ export class User {
   email!: string;
   name!: string;
 
-  constructor(props: Partial<User>) {
+  constructor(props: User) {
     Object.assign(this, props);
   }
 }
