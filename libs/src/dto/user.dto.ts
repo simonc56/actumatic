@@ -3,8 +3,3 @@ export type IUserDto = {
   password: string;
 };
 
-export type IUser = {
-  id: string;
-  email: string;
-  password: string;
-}

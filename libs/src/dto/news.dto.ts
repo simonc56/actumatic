@@ -3,10 +3,3 @@ export type INewsDto = {
   url: string;
   providerId: string;
 };
-
-export type INews = {
-  id: string;
-  title: string;
-  url: string;
-  providerId: string;
-}
