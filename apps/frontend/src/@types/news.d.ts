@@ -1,6 +1,3 @@
-export type INews = {
-  id: string;
-  title: string;
-  url: string;
-  providerId: string;
-}
+import { INewsDto } from "@libs";
+
+export type INews = INewsDto & {}
