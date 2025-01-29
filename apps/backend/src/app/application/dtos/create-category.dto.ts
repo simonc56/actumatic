@@ -1,8 +1,8 @@
-import { ICategoryDto } from '@libs';
+import { ICreateCategoryDto } from '@libs';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateCategoryDto implements ICategoryDto {
+export class CreateCategoryDto implements ICreateCategoryDto {
   @IsString()
   @IsNotEmpty()
-  name!: string;
+  name: string;
 }
