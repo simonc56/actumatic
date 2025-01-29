@@ -1,4 +1,4 @@
-import { IProviderDto } from '@actumatic/libs';
+import { IProviderDto } from '@libs';
 import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class CreateProviderDto implements IProviderDto {

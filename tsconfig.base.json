@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@actumatic/libs": ["libs/src/index.ts"]
+      "@libs": ["libs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

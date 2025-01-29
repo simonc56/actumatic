@@ -1,4 +1,4 @@
-import { ICategoryDto } from '@actumatic/libs';
+import { ICategoryDto } from '@libs';
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateCategoryDto implements ICategoryDto {

@@ -1,4 +1,4 @@
-import { INewsDto } from '@actumatic/libs';
+import { INewsDto } from '@libs';
 import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
 export class CreateNewsDto implements INewsDto {
