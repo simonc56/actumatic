@@ -15,7 +15,7 @@ describe('User Entity', () => {
     expect(user.name).toBe(userData.name);
   });
 
-  it('should create instance without id provided', () => {
+  it('should allow creating an instance without id', () => {
     const userData = {
       email: 'test@example.com',
       name: 'Test User',

@@ -6,6 +6,7 @@ describe('News Entity', () => {
       id: '123',
       title: 'Facebook est racheté par Google',
       url: 'http://econews.com/facebook-est-rachete-par-google',
+      providerId: '123-456',
     };
 
     const news = new News(newsData);
@@ -15,15 +16,17 @@ describe('News Entity', () => {
     expect(news.url).toBe(newsData.url);
   });
 
-  it('should allow partial properties', () => {
+  it('should allow creating an instance without id', () => {
     const newsData = {
       title: 'Facebook est racheté par Google',
+      url: 'http://econews.com/facebook-est-rachete-par-google',
+      providerId: '123-456',
     };
 
     const news = new News(newsData);
 
     expect(news.title).toBe(newsData.title);
+    expect(news.url).toBe(newsData.url);
     expect(news.id).toBeUndefined();
-    expect(news.url).toBeUndefined();
   });
 });

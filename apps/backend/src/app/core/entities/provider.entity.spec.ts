@@ -6,6 +6,7 @@ describe('Provider Entity', () => {
       id: '123',
       name: 'Econews',
       url: 'http://econews.com',
+      categoryId: '123-456',
     };
 
     const provider = new Provider(providerData);
@@ -15,15 +16,17 @@ describe('Provider Entity', () => {
     expect(provider.url).toBe(providerData.url);
   });
 
-  it('should allow partial properties', () => {
+  it('should allow creating an instance without id', () => {
     const providerData = {
       name: 'Econews',
+      url: 'http://econews.com',
+      categoryId: '123-456',
     };
 
     const provider = new Provider(providerData);
 
     expect(provider.name).toBe(providerData.name);
+    expect(provider.url).toBe(providerData.url);
     expect(provider.id).toBeUndefined();
-    expect(provider.url).toBeUndefined();
   });
 });

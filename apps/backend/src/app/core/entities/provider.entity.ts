@@ -1,10 +1,16 @@
+import { CreateProviderDto } from "../../application/dtos/create-provider.dto";
+
 export class Provider {
   id?: string;
   name!: string;
   url!: string;
   categoryId!: string;
 
-  constructor(props: Partial<Provider>) {
+  constructor(props: Provider) {
     Object.assign(this, props);
+  }
+
+  static create(provider: CreateProviderDto): Provider {
+    return new Provider(provider);
   }
 }

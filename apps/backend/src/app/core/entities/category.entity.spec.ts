@@ -13,7 +13,7 @@ describe('Category Entity', () => {
     expect(category.name).toBe(categoryData.name);
   });
 
-  it('should allow partial properties', () => {
+  it('should allow creating an instance without id', () => {
     const categoryData = {
       name: 'Econews',
     };
