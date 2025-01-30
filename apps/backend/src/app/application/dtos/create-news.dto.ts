@@ -1,7 +1,7 @@
-import { INewsDto } from '@libs';
+import { ICreateNewsDto } from '@shared-libs';
 import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
 
-export class CreateNewsDto implements INewsDto {
+export class CreateNewsDto implements ICreateNewsDto {
   @IsString()
   @IsNotEmpty()
   title!: string;

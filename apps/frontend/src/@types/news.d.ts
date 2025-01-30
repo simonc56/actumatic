@@ -1,3 +1,3 @@
-import { INewsDto } from "@libs";
+import { INewsDto } from "@shared-libs";
 
 export type INews = INewsDto & {}

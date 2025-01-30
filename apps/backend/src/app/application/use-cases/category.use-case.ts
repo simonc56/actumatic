@@ -5,7 +5,7 @@ import {
   type ICategoryRepository,
 } from '../ports/category-repository.port';
 import { CreateCategoryDto } from '../dtos/create-category.dto';
-import { ICategoryDto } from '@libs';
+import { ICategoryDto } from '@shared-libs';
 
 @Injectable()
 export class CreateCategoryUseCase {

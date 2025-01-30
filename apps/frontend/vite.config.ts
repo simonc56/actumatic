@@ -18,7 +18,7 @@ export default defineConfig({
   plugins: [react(), nxCopyAssetsPlugin(['*.md'])],
   resolve: {
     alias: {
-      '@libs': path.resolve(__dirname, '../../libs/src/index.ts'),
+      '@shared-libs': path.resolve(__dirname, '../../libs/src/index.ts'),
     },
   },
   // Uncomment this if you are using workers.

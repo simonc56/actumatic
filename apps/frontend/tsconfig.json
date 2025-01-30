@@ -8,7 +8,7 @@
     "types": ["vite/client", "vitest"],
     "baseUrl": ".",
     "paths": {
-      "@libs": ["../../libs/src/index.ts"]
+      "@shared-libs": ["../../libs/src/index.ts"]
     }
   },
   "files": [],

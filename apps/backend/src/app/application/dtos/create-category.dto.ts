@@ -1,4 +1,4 @@
-import { ICreateCategoryDto } from '@libs';
+import { ICreateCategoryDto } from '@shared-libs';
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateCategoryDto implements ICreateCategoryDto {

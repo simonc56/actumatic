@@ -1,5 +1,5 @@
 import { enhancedApi } from '../app/services/api';
-import { IUser, IUserDto } from '@libs';
+import { IUser, IUserDto } from '@shared-libs';
 
 const userApi = enhancedApi
   .enhanceEndpoints({ addTagTypes: ['Users'] })
