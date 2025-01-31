@@ -1,21 +1,22 @@
+import { IUserDto } from '@shared-libs';
+import { IUser } from 'src/@types/user';
 import { enhancedApi } from '../app/services/api';
-import { IUser, IUserDto } from '@shared-libs';
 
 const userApi = enhancedApi
-  .enhanceEndpoints({ addTagTypes: ['Users'] })
+  .enhanceEndpoints({ addTagTypes: ['User', 'Users'] })
   .injectEndpoints({
     endpoints: (builder) => ({
       getUsers: builder.query<IUser[], void>({
-        query: () => 'users',
+        query: () => 'user',
         providesTags: ['Users'],
       }),
       getUser: builder.query<IUser, string>({
-        query: (id: string) => `users/${id}`,
-        providesTags: ['Users'],
+        query: (id: string) => `user/${id}`,
+        providesTags: ['User'],
       }),
       createUser: builder.mutation<IUser, IUserDto>({
         query: (user) => ({
-          url: `users`,
+          url: `user`,
           method: 'POST',
           body: user,
         }),
