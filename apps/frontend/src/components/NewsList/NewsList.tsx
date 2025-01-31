@@ -8,8 +8,7 @@ function NewsList({ providerId }: Props) {
     <div>
       {allNews?.map((news) => (
         <div key={news.id}>
-          <h3>{news.title}</h3>
-          <a href={news.url}>{news.url}</a>
+          <a href={news.url}>{news.title}</a>
         </div>
       ))}
     </div>
