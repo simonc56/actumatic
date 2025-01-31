@@ -13,7 +13,7 @@ export class ProviderController {
     private readonly createProviderUseCase: CreateProviderUseCase,
     private readonly getProvidersUseCase: GetProvidersUseCase,
     private readonly getProviderUseCase: GetProviderUseCase,
-    private readonly getNewsByProviderUseCase: GetNewsByProviderUseCase
+    private readonly getNewsByProviderUseCase: GetNewsByProviderUseCase,
   ) {}
 
   @Post()
@@ -30,11 +30,8 @@ export class ProviderController {
   async getNewsByProvider(
     @Param('providerId') providerId: string,
     @Query('after') after: string,
-    @Query('before') before: string
+    @Query('before') before: string,
   ) {
-    console.log('providerId', providerId);
-    console.log('after', after);
-    console.log('before', before);
     return this.getNewsByProviderUseCase.execute(providerId, after, before);
   }
 
