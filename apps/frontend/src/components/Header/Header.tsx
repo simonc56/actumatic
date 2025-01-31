@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Header() {
   return (
     <nav
@@ -5,9 +7,9 @@ function Header() {
       data-bs-theme="dark"
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Actu Matic
-        </a>
+        <Link className="navbar-brand" to="#">
+          Actumatic
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,61 +24,61 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to="#">
                 Accueil
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Link
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                to="#"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Catégories
-              </a>
+              </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="#">
                     Numérique
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="#">
                     Mobile
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="#">
                     Something else here
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
-                Disabled
-              </a>
+              <Link className="nav-link" to="#">
+                Filtres
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link disabled" aria-disabled="true" to="">
+                Dates
+              </Link>
             </li>
           </ul>
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Search"
-              aria-label="Search"
+              placeholder="Mot clé"
+              aria-label="Chercher"
             />
             <button className="btn btn-outline-secondary" type="submit">
-              Search
+              Chercher
             </button>
           </form>
         </div>
