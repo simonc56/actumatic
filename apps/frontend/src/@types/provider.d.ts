@@ -1,3 +1,3 @@
-import { IProviderDto } from "@shared-libs";
+import { IProviderDto } from '@shared-libs';
 
-export type IPovider = IProviderDto & {}
+export type IProvider = IProviderDto & {};
