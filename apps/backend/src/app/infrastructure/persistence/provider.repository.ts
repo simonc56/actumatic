@@ -43,16 +43,20 @@ export class ProviderRepository implements IProviderRepository {
   async findNewsByProvider(
     providerId: string,
     after: string,
-    before: string
+    before: string,
   ): Promise<News[]> {
+    const where: any = { providerId };
+    if (before || after) {
+      where.createdAt = {};
+      if (before) {
+        where.createdAt.lte = new Date(before).toISOString();
+      }
+      if (after) {
+        where.createdAt.gte = new Date(after).toISOString();
+      }
+    }
     const news = await this.prisma.news.findMany({
-      where: {
-        providerId,
-        createdAt: {
-          lte: new Date(before).toISOString(),
-          gte: new Date(after).toISOString(),
-        },
-      },
+      where,
     });
     return news.map((news) => new News(news));
   }
