@@ -12,6 +12,7 @@
     "workspace-lint": "nx workspace-lint",
     "migrate": "nx migrate",
     "update": "nx update",
+    "start" : "nx run-many --target=serve --projects=frontend,backend",
     "backend:start": "nx serve backend",
     "backend:build": "nx build backend",
     "backend:test": "nx test backend",
