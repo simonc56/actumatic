@@ -9,6 +9,8 @@
     "types": ["jest", "node"]
   },
   "include": [
+    "./src/**/*.ts",
+    "../../libs/**/*.ts",
     "jest.config.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
