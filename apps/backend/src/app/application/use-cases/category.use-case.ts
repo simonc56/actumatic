@@ -1,11 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { ICategoryDto } from '@shared-libs';
 import { Category } from '../../core/entities/category.entity';
+import { CreateCategoryDto } from '../dtos/create-category.dto';
 import {
   CATEGORY_REPOSITORY,
   type ICategoryRepository,
 } from '../ports/category-repository.port';
-import { CreateCategoryDto } from '../dtos/create-category.dto';
-import { ICategoryDto } from '@shared-libs';
 
 @Injectable()
 export class CreateCategoryUseCase {
@@ -20,7 +20,7 @@ export class CreateCategoryUseCase {
     const savedCategory = await this.userRepository.save(category);
     // éviter de retourner l'entité directement
     // faire un mapper si besoin
-    return {id: savedCategory.id, name: savedCategory.name};
+    return { id: savedCategory.id!, name: savedCategory.name };
   }
 }
 
@@ -33,7 +33,8 @@ export class GetCategoryUseCase {
 
   async execute(id: string): Promise<ICategoryDto | null> {
     const category = await this.userRepository.findById(id);
-    return {id: category.id, name: category.name}; 
+    if (category) return { id: category.id!, name: category.name };
+    return null;
   }
 }
 
@@ -46,6 +47,9 @@ export class GetCategoriesUseCase {
 
   async execute(): Promise<ICategoryDto[]> {
     const categories = await this.userRepository.findAll();
-    return categories.map(category => ({id: category.id, name: category.name}));
+    return categories.map((category) => ({
+      id: category.id!,
+      name: category.name,
+    }));
   }
 }
