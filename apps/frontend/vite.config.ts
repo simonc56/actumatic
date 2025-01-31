@@ -45,4 +45,17 @@ export default defineConfig({
       provider: 'v8',
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: [
+          'legacy-js-api',
+          'import',
+          'mixed-decls',
+          'global-builtin',
+          'color-functions',
+        ],
+      },
+    },
+  },
 });
