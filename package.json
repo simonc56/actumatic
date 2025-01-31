@@ -2,7 +2,9 @@
   "name": "@actumatic/source",
   "version": "0.0.0",
   "license": "MIT",
-  "prisma.schema": "apps/backend/prisma/schema.prisma",
+  "prisma":{
+    "schema": "apps/backend/prisma/schema.prisma"
+  },
   "scripts": {
     "affected": "nx affected",
     "format": "nx format:write",
