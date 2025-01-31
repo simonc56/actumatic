@@ -1,8 +1,13 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from '../infrastructure/persistence/prisma.service';
 import { PROVIDER_REPOSITORY } from '../application/ports/provider-repository.port';
+import {
+  CreateProviderUseCase,
+  GetNewsByProviderUseCase,
+  GetProvidersUseCase,
+  GetProviderUseCase,
+} from '../application/use-cases/provider.use-case';
+import { PrismaService } from '../infrastructure/persistence/prisma.service';
 import { ProviderRepository } from '../infrastructure/persistence/provider.repository';
-import { CreateProviderUseCase, GetProvidersUseCase, GetProviderUseCase } from '../application/use-cases/provider.use-case';
 import { ProviderController } from '../presentation/controllers/provider.controller';
 
 @Module({
@@ -11,6 +16,7 @@ import { ProviderController } from '../presentation/controllers/provider.control
     PrismaService,
     CreateProviderUseCase,
     GetProviderUseCase,
+    GetNewsByProviderUseCase,
     GetProvidersUseCase,
     {
       provide: PROVIDER_REPOSITORY,

@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CreateProviderDto } from '../../application/dtos/create-provider.dto';
 import {
   CreateProviderUseCase,
+  GetNewsByProviderUseCase,
   GetProvidersUseCase,
   GetProviderUseCase,
 } from '../../application/use-cases/provider.use-case';
@@ -11,7 +12,8 @@ export class ProviderController {
   constructor(
     private readonly createProviderUseCase: CreateProviderUseCase,
     private readonly getProvidersUseCase: GetProvidersUseCase,
-    private readonly getProviderUseCase: GetProviderUseCase
+    private readonly getProviderUseCase: GetProviderUseCase,
+    private readonly getNewsByProviderUseCase: GetNewsByProviderUseCase
   ) {}
 
   @Post()
@@ -22,6 +24,18 @@ export class ProviderController {
   @Get()
   async getProviders() {
     return this.getProvidersUseCase.execute();
+  }
+
+  @Get(':providerId/news')
+  async getNewsByProvider(
+    @Param('providerId') providerId: string,
+    @Query('after') after: string,
+    @Query('before') before: string
+  ) {
+    console.log('providerId', providerId);
+    console.log('after', after);
+    console.log('before', before);
+    return this.getNewsByProviderUseCase.execute(providerId, after, before);
   }
 
   @Get(':id')

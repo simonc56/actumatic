@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
 import { ICategoryRepository } from '../../application/ports/category-repository.port';
 import { Category } from '../../core/entities/category.entity';
+import { Provider } from '../../core/entities/provider.entity';
+import { PrismaService } from './prisma.service';
 
 @Injectable()
 export class CategoryRepository implements ICategoryRepository {
@@ -28,6 +29,13 @@ export class CategoryRepository implements ICategoryRepository {
   async findAll(): Promise<Category[]> {
     const categorys: Category[] = await this.prisma.category.findMany();
     return categorys.map((category) => new Category(category));
+  }
+
+  async findProvidersByCategory(categoryId: string): Promise<Provider[]> {
+    const providers = await this.prisma.provider.findMany({
+      where: { categoryId },
+    });
+    return providers.map((provider: Provider) => new Provider(provider));
   }
 
   async findByName(name: string): Promise<Category[]> {

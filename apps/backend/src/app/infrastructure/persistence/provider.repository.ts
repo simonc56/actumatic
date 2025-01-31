@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from './prisma.service';
 import { IProviderRepository } from '../../application/ports/provider-repository.port';
+import { News } from '../../core/entities/news.entity';
 import { Provider } from '../../core/entities/provider.entity';
+import { PrismaService } from './prisma.service';
 
 @Injectable()
 export class ProviderRepository implements IProviderRepository {
@@ -37,6 +38,23 @@ export class ProviderRepository implements IProviderRepository {
       where: { categoryId },
     });
     return providers.map((provider: Provider) => new Provider(provider));
+  }
+
+  async findNewsByProvider(
+    providerId: string,
+    after: string,
+    before: string
+  ): Promise<News[]> {
+    const news = await this.prisma.news.findMany({
+      where: {
+        providerId,
+        createdAt: {
+          lte: new Date(before).toISOString(),
+          gte: new Date(after).toISOString(),
+        },
+      },
+    });
+    return news.map((news) => new News(news));
   }
 
   async delete(id: string): Promise<Provider> {

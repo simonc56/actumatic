@@ -46,20 +46,6 @@ export class NewsRepository implements INewsRepository {
     return news.map((news) => new News(news));
   }
 
-  async findByProvider(provider: string): Promise<News[]> {
-    const news: News[] = await this.prisma.news.findMany({
-      where: {
-        provider: {
-          name: provider,
-        },
-      },
-      include: {
-        provider: { select: { name: true } },
-      },
-    });
-    return news.map((news) => new News(news));
-  }
-
   async findByDateAndProvider(
     date: string,
     providerId: string,
