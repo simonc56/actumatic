@@ -6,12 +6,12 @@ import {
 } from '../../application/use-cases/user.use-case';
 import { User } from '../../core/entities/user.entity';
 
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(
     private readonly createUserUseCase: CreateUserUseCase,
     private readonly getUsersUseCase: GetUsersUseCase,
-    private readonly getUserUseCase: GetUserUseCase,
+    private readonly getUserUseCase: GetUserUseCase
   ) {}
 
   @Post()
