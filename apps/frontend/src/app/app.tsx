@@ -12,7 +12,10 @@ export function App() {
       {/* Feel free to move and update them to fit your needs */}
       <br />
       <hr />
-      <ProvidersList />
+      <div className="container py-4 px-3 mx-auto">
+        <ProvidersList />
+      </div>
+      <button className="btn btn-primary">Cliquer</button>
       <br />
       <div role="navigation">
         <ul>
