@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { CreateNewsDto } from '../../application/dtos/create-news.dto';
 import {
   CreateNewsUseCase,
@@ -20,8 +20,11 @@ export class NewsController {
   }
 
   @Get()
-  async getAllNews() {
-    return this.getAllNewsUseCase.execute();
+  async getAllNews(
+    @Query('after') after: string, // ISO formated date string, ex. 2021-12-31
+    @Query('before') before: string,
+  ) {
+    return this.getAllNewsUseCase.execute({ after, before });
   }
 
   @Get(':id')

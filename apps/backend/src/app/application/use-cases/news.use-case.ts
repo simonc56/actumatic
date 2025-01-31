@@ -36,7 +36,13 @@ export class GetAllNewsUseCase {
     @Inject(NEWS_REPOSITORY) private readonly newsRepository: INewsRepository,
   ) {}
 
-  async execute(): Promise<News[]> {
-    return this.newsRepository.findAll();
+  async execute({
+    after,
+    before,
+  }: {
+    after: string;
+    before: string;
+  }): Promise<News[]> {
+    return this.newsRepository.findAll({ after, before });
   }
 }

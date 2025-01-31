@@ -27,8 +27,24 @@ export class NewsRepository implements INewsRepository {
     return new News(saved);
   }
 
-  async findAll(): Promise<News[]> {
-    const news: News[] = await this.prisma.news.findMany();
+  async findAll({
+    after,
+    before,
+  }: {
+    after: string;
+    before: string;
+  }): Promise<News[]> {
+    const where: any = {};
+    if (before || after) {
+      where.createdAt = {};
+      if (before) {
+        where.createdAt.lte = new Date(before).toISOString();
+      }
+      if (after) {
+        where.createdAt.gte = new Date(after).toISOString();
+      }
+    }
+    const news: News[] = await this.prisma.news.findMany({ where });
     return news.map((news) => new News(news));
   }
 
@@ -37,23 +53,6 @@ export class NewsRepository implements INewsRepository {
       where: { id },
     });
     return new News(news);
-  }
-
-  async findByDate(date: string): Promise<News[]> {
-    const news: News[] = await this.prisma.news.findMany({
-      where: { createdAt: date },
-    });
-    return news.map((news) => new News(news));
-  }
-
-  async findByDateAndProvider(
-    date: string,
-    providerId: string,
-  ): Promise<News[]> {
-    const news: News[] = await this.prisma.news.findMany({
-      where: { createdAt: date, providerId },
-    });
-    return news.map((news) => new News(news));
   }
 
   async findByTitle(title: string): Promise<News[]> {
