@@ -1,8 +1,8 @@
 /// <reference types='vitest' />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: __dirname,
@@ -19,6 +19,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@shared-libs': path.resolve(__dirname, '../../libs/src/index.ts'),
+      src: path.resolve(__dirname, './src'),
     },
   },
   // Uncomment this if you are using workers.
