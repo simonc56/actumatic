@@ -6,12 +6,12 @@ import {
   GetProviderUseCase,
 } from '../../application/use-cases/provider.use-case';
 
-@Controller('category')
+@Controller('provider')
 export class ProviderController {
   constructor(
     private readonly createProviderUseCase: CreateProviderUseCase,
     private readonly getProvidersUseCase: GetProvidersUseCase,
-    private readonly getProviderUseCase: GetProviderUseCase,
+    private readonly getProviderUseCase: GetProviderUseCase
   ) {}
 
   @Post()
