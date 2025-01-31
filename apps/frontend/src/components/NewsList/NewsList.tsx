@@ -1,14 +1,14 @@
-import { useGetAllNewsQuery } from 'src/features/news';
+import { useGetAllNewsByProviderQuery } from 'src/features/news';
 
 type Props = { providerId: string };
 
 function NewsList({ providerId }: Props) {
-  const { data: allNews } = useGetAllNewsQuery();
+  const { data: allNews } = useGetAllNewsByProviderQuery({ providerId });
   return (
     <div>
       {allNews?.map((news) => (
         <div key={news.id}>
-          <h2>{news.title}</h2>
+          <h3>{news.title}</h3>
           <a href={news.url}>{news.url}</a>
         </div>
       ))}
