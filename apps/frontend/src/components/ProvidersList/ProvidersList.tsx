@@ -1,4 +1,5 @@
 import { useGetProvidersQuery } from 'src/features/provider';
+import NewsList from '../NewsList/NewsList';
 
 function ProvidersList() {
   const { data: providers } = useGetProvidersQuery();
@@ -9,6 +10,7 @@ function ProvidersList() {
         <div key={provider.id}>
           <h2>{provider.name}</h2>
           <a href={provider.url}>{provider.url}</a>
+          <NewsList providerId={provider.id} />
         </div>
       ))}
     </div>
