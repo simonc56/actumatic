@@ -1,5 +1,6 @@
 import { Link, Route, Routes } from 'react-router-dom';
-import Header from '../components/Header/Header';
+import Header from 'src/components/Header/Header';
+import ProvidersList from 'src/components/ProvidersList/ProvidersList';
 
 export function App() {
   return (
@@ -11,6 +12,7 @@ export function App() {
       {/* Feel free to move and update them to fit your needs */}
       <br />
       <hr />
+      <ProvidersList />
       <br />
       <div role="navigation">
         <ul>
