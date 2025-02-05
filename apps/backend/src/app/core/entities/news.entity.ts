@@ -1,10 +1,11 @@
-import { CreateNewsDto } from "../../application/dtos/create-news.dto";
+import { CreateNewsDto } from '../../application/dtos/create-news.dto';
 
 export class News {
   id?: string;
   title!: string;
   url!: string;
   providerId!: string;
+  createdAt?: Date;
 
   constructor(props: News) {
     Object.assign(this, props);

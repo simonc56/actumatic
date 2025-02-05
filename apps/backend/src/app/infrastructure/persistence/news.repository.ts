@@ -22,6 +22,7 @@ export class NewsRepository implements INewsRepository {
         title: news.title,
         url: news.url,
         providerId: news.providerId,
+        createdAt: news.createdAt,
       },
     });
     return new News(saved);
@@ -37,6 +38,7 @@ export class NewsRepository implements INewsRepository {
         title: news.title,
         url: news.url,
         providerId: news.providerId,
+        createdAt: news.createdAt,
       },
     });
     return new News(upserted);

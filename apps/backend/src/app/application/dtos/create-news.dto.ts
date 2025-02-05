@@ -1,5 +1,11 @@
 import { ICreateNewsDto } from '@shared-libs';
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import {
+  IsDateString,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUrl,
+} from 'class-validator';
 
 export class CreateNewsDto implements ICreateNewsDto {
   @IsString()
@@ -14,4 +20,8 @@ export class CreateNewsDto implements ICreateNewsDto {
   @IsString()
   @IsNotEmpty()
   providerId!: string;
+
+  @IsDateString()
+  @IsOptional()
+  createdAt?: Date;
 }
