@@ -27,6 +27,21 @@ export class NewsRepository implements INewsRepository {
     return new News(saved);
   }
 
+  async upsert(news: News): Promise<News> {
+    const upserted = await this.prisma.news.upsert({
+      where: { url: news.url },
+      update: {
+        title: news.title,
+      },
+      create: {
+        title: news.title,
+        url: news.url,
+        providerId: news.providerId,
+      },
+    });
+    return new News(upserted);
+  }
+
   async findAll({
     after,
     before,

@@ -13,5 +13,6 @@ export interface INewsRepository {
   }): Promise<News[]>;
   findByTitle(title: string): Promise<News[]>;
   save(news: News): Promise<News>;
+  upsert(news: News): Promise<News>;
   delete(id: string): Promise<News>;
 }

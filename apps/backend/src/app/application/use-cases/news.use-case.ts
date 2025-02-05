@@ -46,3 +46,16 @@ export class GetAllNewsUseCase {
     return this.newsRepository.findAll({ after, before });
   }
 }
+
+@Injectable()
+export class UpsertNewsUseCase {
+  constructor(
+    @Inject(NEWS_REPOSITORY) private readonly newsRepository: INewsRepository,
+  ) {}
+
+  async execute(newsData: CreateNewsDto): Promise<News> {
+    const news = await this.newsRepository.upsert(newsData);
+
+    return new News(news);
+  }
+}
