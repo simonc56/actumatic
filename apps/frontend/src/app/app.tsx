@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from 'react-router-dom';
+import CategoriesList from 'src/components/CategoriesList/CategoriesList';
 import Header from 'src/components/Header/Header';
-import ProvidersList from 'src/components/ProvidersList/ProvidersList';
 
 export function App() {
   return (
@@ -11,11 +11,9 @@ export function App() {
       {/* These routes and navigation have been generated for you */}
       {/* Feel free to move and update them to fit your needs */}
       <br />
-      <hr />
       <div className="container py-4 px-3 mx-auto">
-        <ProvidersList />
+        <CategoriesList />
       </div>
-      <button className="btn btn-primary">Cliquer</button>
       <br />
       <div role="navigation">
         <ul>
