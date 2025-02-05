@@ -29,12 +29,16 @@ export class NewsRepository implements INewsRepository {
   }
 
   async upsert(news: News): Promise<News> {
-    const upserted = await this.prisma.news.upsert({
+    const existing = await this.prisma.news.findUnique({
       where: { url: news.url },
-      update: {
-        title: news.title,
-      },
-      create: {
+    });
+
+    if (existing) {
+      return new News(existing);
+    }
+
+    const upserted = await this.prisma.news.create({
+      data: {
         title: news.title,
         url: news.url,
         providerId: news.providerId,
