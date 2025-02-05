@@ -10,8 +10,12 @@ const providerApi = enhancedApi
         query: () => 'provider',
         providesTags: ['Providers'],
       }),
+      getProvidersByCategory: builder.query<IProvider[], string>({
+        query: (categoryId: string) => `category/${categoryId}/provider`,
+        providesTags: ['Providers'],
+      }),
       getProvider: builder.query<IProvider, string>({
-        query: (id: string) => `provider/${id}`,
+        query: (providerId: string) => `provider/${providerId}`,
         providesTags: ['Provider'],
       }),
       createProvider: builder.mutation<IProvider, IProviderDto>({
@@ -27,6 +31,7 @@ const providerApi = enhancedApi
 
 export const {
   useGetProvidersQuery,
+  useGetProvidersByCategoryQuery,
   useGetProviderQuery,
   useCreateProviderMutation,
 } = providerApi;
