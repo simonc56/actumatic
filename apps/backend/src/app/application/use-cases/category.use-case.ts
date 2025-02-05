@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ICategoryDto } from '@shared-libs';
+import { ICategoryDto, IProviderDto } from '@shared-libs';
 import { Category } from '../../core/entities/category.entity';
 import { CreateCategoryDto } from '../dtos/create-category.dto';
 import {
@@ -28,13 +28,31 @@ export class CreateCategoryUseCase {
 export class GetCategoryUseCase {
   constructor(
     @Inject(CATEGORY_REPOSITORY)
-    private readonly userRepository: ICategoryRepository,
+    private readonly categoryRepository: ICategoryRepository,
   ) {}
 
   async execute(id: string): Promise<ICategoryDto | null> {
-    const category = await this.userRepository.findById(id);
+    const category = await this.categoryRepository.findById(id);
     if (category) return { id: category.id!, name: category.name };
     return null;
+  }
+}
+
+@Injectable()
+export class GetProvidersByCategoryUseCase {
+  constructor(
+    @Inject(CATEGORY_REPOSITORY)
+    private readonly categoryRepository: ICategoryRepository,
+  ) {}
+
+  async execute(id: string): Promise<IProviderDto[] | null> {
+    const providers = await this.categoryRepository.findProvidersByCategory(id);
+    return providers.map((provider) => ({
+      id: provider.id!,
+      name: provider.name,
+      url: provider.url,
+      categoryId: provider.categoryId,
+    }));
   }
 }
 
