@@ -1,13 +1,20 @@
-import { useGetProvidersQuery } from 'src/features/provider';
+import { ICategory } from 'src/@types/category';
+import { useGetProvidersByCategoryQuery } from 'src/features/provider';
 import NewsList from '../NewsList/NewsList';
+import './ProvidersList.scss';
 
-function ProvidersList() {
-  const { data: providers } = useGetProvidersQuery();
+type ProvidersListProps = {
+  category: ICategory;
+};
+
+function ProvidersList({ category }: ProvidersListProps) {
+  const { data: providers } = useGetProvidersByCategoryQuery(category.id);
+  if (!providers?.length) return null;
   return (
-    <div>
-      <h1>CategoryName</h1>
+    <div className="category">
+      <h1 className="category-title">{category.name}</h1>
       {providers?.map((provider) => (
-        <div key={provider.id}>
+        <div className="provider-list" key={provider.id}>
           <h2>{provider.name}</h2>
           <NewsList providerId={provider.id} />
         </div>

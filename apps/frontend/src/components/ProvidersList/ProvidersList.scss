@@ -1,0 +1,22 @@
+.category {
+  width: 800px;
+}
+
+.category-title {
+  color: #36465b;
+  font-weight: 700;
+}
+
+.provider-list {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: #36465b;
+  color: #ccc;
+  h2 {
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0 15px;
+  }
+}
