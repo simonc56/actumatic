@@ -6,6 +6,8 @@ describe('Provider Entity', () => {
       id: '123',
       name: 'Econews',
       url: 'http://econews.com',
+      feedUrl: 'http://econews.com/feed',
+      feedType: 'RSS2',
       categoryId: '123-456',
     };
 
@@ -14,12 +16,16 @@ describe('Provider Entity', () => {
     expect(provider.id).toBe(providerData.id);
     expect(provider.name).toBe(providerData.name);
     expect(provider.url).toBe(providerData.url);
+    expect(provider.feedUrl).toBe(providerData.feedUrl);
+    expect(provider.feedType).toBe(providerData.feedType);
   });
 
   it('should allow creating an instance without id', () => {
     const providerData = {
       name: 'Econews',
       url: 'http://econews.com',
+      feedUrl: 'http://econews.com/feed',
+      feedType: 'RSS2',
       categoryId: '123-456',
     };
 
@@ -27,6 +33,8 @@ describe('Provider Entity', () => {
 
     expect(provider.name).toBe(providerData.name);
     expect(provider.url).toBe(providerData.url);
+    expect(provider.feedUrl).toBe(providerData.feedUrl);
+    expect(provider.feedType).toBe(providerData.feedType);
     expect(provider.id).toBeUndefined();
   });
 });

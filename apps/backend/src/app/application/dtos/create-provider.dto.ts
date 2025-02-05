@@ -12,6 +12,15 @@ export class CreateProviderDto implements ICreateProviderDto {
   url!: string;
 
   @IsString()
+  @IsUrl()
+  @IsNotEmpty()
+  feedUrl!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  feedType!: string;
+
+  @IsString()
   @IsNotEmpty()
   categoryId!: string;
 }

@@ -21,6 +21,8 @@ export class ProviderRepository implements IProviderRepository {
     const saved = await this.prisma.provider.create({
       data: {
         url: provider.url,
+        feedUrl: provider.feedUrl,
+        feedType: provider.feedType,
         name: provider.name,
         categoryId: provider.categoryId,
       },
