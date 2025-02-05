@@ -4,7 +4,10 @@ import './NewsList.scss';
 type Props = { providerId: string };
 
 function NewsList({ providerId }: Props) {
-  const { data: allNews } = useGetAllNewsByProviderQuery({ providerId });
+  const { data: allNews } = useGetAllNewsByProviderQuery({
+    providerId,
+    after: new Date().toISOString().split('T')[0],
+  });
   return (
     <div className="news-list">
       {allNews?.map((news) => (
