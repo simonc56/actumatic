@@ -1,0 +1,27 @@
+.news-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: 15px;
+
+  &__item {
+    margin: 0;
+    padding: 1px 15px;
+    background-color: #282828;
+
+    a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #fff;
+    }
+    &:nth-child(2n) {
+      background-color: #323232;
+    }
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}

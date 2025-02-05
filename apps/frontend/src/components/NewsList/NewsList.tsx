@@ -1,14 +1,17 @@
 import { useGetAllNewsByProviderQuery } from 'src/features/news';
+import './NewsList.scss';
 
 type Props = { providerId: string };
 
 function NewsList({ providerId }: Props) {
   const { data: allNews } = useGetAllNewsByProviderQuery({ providerId });
   return (
-    <div>
+    <div className="news-list">
       {allNews?.map((news) => (
-        <div key={news.id}>
-          <a href={news.url}>{news.title}</a>
+        <div className="news-list__item" key={news.id}>
+          <a href={news.url} target="_blank">
+            {news.title}
+          </a>
         </div>
       ))}
     </div>
