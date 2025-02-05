@@ -22,7 +22,9 @@ model User {
 model Provider {
   id         String   @id @default(uuid()) @db.Uuid
   url        String   @unique
+  feedUrl    String   @unique
   name       String
+  feedType   String
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String   @db.Uuid
   News       News[]
