@@ -3,6 +3,7 @@ import Parser, { Item } from 'rss-parser';
 import { INewsParser } from '../../application/ports/news-parser.port';
 import { News } from '../../core/entities/news.entity';
 import { Provider } from '../../core/entities/provider.entity';
+import { parseFrenchDate } from '../../utils/parsing';
 
 const parser = new Parser();
 
@@ -17,7 +18,7 @@ export class RSS2NewsParser implements INewsParser {
       title: item.title || '',
       url: item.link || '',
       providerId: provider.id!,
-      createdAt: new Date(item.pubDate || Date.now()),
+      createdAt: parseFrenchDate(item.pubDate || new Date().toISOString()),
     }));
   }
 }
