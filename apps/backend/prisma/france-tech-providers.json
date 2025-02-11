@@ -1,0 +1,60 @@
+{
+  "feeds": [
+    {
+      "name": "Numerama",
+      "url": "https://www.numerama.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.numerama.com/feed"
+    },
+    {
+      "name": "Frandroid",
+      "url": "https://www.frandroid.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.frandroid.com/feed"
+    },
+    {
+      "name": "Next",
+      "url": "https://next.ink",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://next.ink/feed/free"
+    },
+    {
+      "name": "Les Numériques",
+      "url": "https://www.lesnumeriques.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.lesnumeriques.com/rss.xml"
+    },
+    {
+      "name": "Développez.com",
+      "url": "https://www.developpez.com",
+      "category": "Dev",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.developpez.com/index/rss"
+    },
+    {
+      "name": "Journal du Net",
+      "url": "https://www.journaldunet.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.journaldunet.com/rss/"
+    },
+    {
+      "name": "ZDNet.fr",
+      "url": "https://www.zdnet.fr",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.zdnet.fr/feeds/rss/actualites/"
+    },
+    {
+      "name": "Clubic",
+      "url": "https://www.clubic.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.clubic.com/feed/news.rss"
+    }
+  ]
+}
