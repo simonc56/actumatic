@@ -15,7 +15,7 @@ export class ScheduledTaskService {
 
   private readonly logger = new Logger(ScheduledTaskService.name);
 
-  @Cron('*/2 * * * *') // Exécution toutes les 20 minutes
+  @Cron('*/20 * * * *') // Exécution toutes les 20 minutes
   async handleTask() {
     this.logger.log('⏱️ Running scheduled tasks now!');
 
