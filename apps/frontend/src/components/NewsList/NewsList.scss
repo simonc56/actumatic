@@ -6,8 +6,11 @@
 
   &__item {
     margin: 0;
-    padding: 1px 15px;
+    padding: 1px;
     background-color: #282828;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     a {
       color: #ccc;
@@ -23,5 +26,10 @@
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
     }
+  }
+  &__item_time {
+    font-size: 12px;
+    color: #999;
+    margin-inline: 0.5rem;
   }
 }

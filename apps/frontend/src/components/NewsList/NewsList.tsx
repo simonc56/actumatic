@@ -1,4 +1,5 @@
 import { useGetAllNewsByProviderQuery } from 'src/features/news';
+import { isoToTimeString } from 'src/utils/datetime';
 import './NewsList.scss';
 
 type Props = { providerId: string };
@@ -12,6 +13,9 @@ function NewsList({ providerId }: Props) {
     <div className="news-list">
       {allNews?.map((news) => (
         <div className="news-list__item" key={news.id}>
+          <span className="news-list__item_time">
+            {isoToTimeString(news.createdAt)}
+          </span>
           <a href={news.url} target="_blank">
             {news.title}
           </a>
