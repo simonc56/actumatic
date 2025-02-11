@@ -13,7 +13,10 @@ export class CreateNewsUseCase {
   ) {}
 
   async execute(newsData: CreateNewsDto): Promise<News> {
-    const news = await this.newsRepository.save(newsData);
+    if (!newsData.createdAt) {
+      newsData.createdAt = new Date();
+    }
+    const news = await this.newsRepository.save(newsData as News);
 
     return new News(news);
   }
@@ -54,7 +57,10 @@ export class UpsertNewsUseCase {
   ) {}
 
   async execute(newsData: CreateNewsDto): Promise<News> {
-    const news = await this.newsRepository.upsert(newsData);
+    if (!newsData.createdAt) {
+      newsData.createdAt = new Date();
+    }
+    const news = await this.newsRepository.upsert(newsData as News);
 
     return new News(news);
   }

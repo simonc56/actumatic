@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { ICreateNewsDto } from '@shared-libs';
 import Parser, { Item } from 'rss-parser';
 import { INewsParser } from '../../application/ports/news-parser.port';
 import { News } from '../../core/entities/news.entity';
@@ -12,7 +11,7 @@ export class RSS2NewsParser implements INewsParser {
   fetchNewsFromProvider(provider: Provider): Promise<News[]> {
     throw new Error('Method not implemented.');
   }
-  async fetchFrom(provider: Provider): Promise<ICreateNewsDto[]> {
+  async fetchFrom(provider: Provider): Promise<News[]> {
     const feed = await parser.parseURL(provider.feedUrl);
     return feed.items.map((item: Item) => ({
       title: item.title || '',

@@ -5,13 +5,16 @@ export class News {
   title!: string;
   url!: string;
   providerId!: string;
-  createdAt?: Date;
+  createdAt!: Date;
 
   constructor(props: News) {
     Object.assign(this, props);
   }
 
   static create(news: CreateNewsDto): News {
-    return new News(news);
+    if (!news.createdAt) {
+      news.createdAt = new Date();
+    }
+    return new News(news as News);
   }
 }
