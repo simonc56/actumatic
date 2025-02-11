@@ -65,7 +65,10 @@ export class NewsRepository implements INewsRepository {
         where.createdAt.gte = new Date(after).toISOString();
       }
     }
-    const news: News[] = await this.prisma.news.findMany({ where });
+    const news: News[] = await this.prisma.news.findMany({
+      where,
+      orderBy: [{ createdAt: 'desc' }],
+    });
     return news.map((news) => new News(news));
   }
 
@@ -79,6 +82,7 @@ export class NewsRepository implements INewsRepository {
   async findByTitle(title: string): Promise<News[]> {
     const news: News[] = await this.prisma.news.findMany({
       where: { title },
+      orderBy: [{ createdAt: 'desc' }],
     });
     return news.map((news) => new News(news));
   }

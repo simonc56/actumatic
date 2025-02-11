@@ -59,6 +59,7 @@ export class ProviderRepository implements IProviderRepository {
     }
     const news = await this.prisma.news.findMany({
       where,
+      orderBy: [{ createdAt: 'desc' }],
     });
     return news.map((news) => new News(news));
   }
