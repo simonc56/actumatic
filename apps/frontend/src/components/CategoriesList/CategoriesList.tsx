@@ -2,11 +2,7 @@ import { useGetCategoriesQuery } from 'src/features/category';
 import ProvidersList from '../ProvidersList/ProvidersList';
 import './CategoriesList.scss';
 
-type CategoriesListProps = {
-  category: string;
-};
-
-function CategoriesList({ category }: CategoriesListProps) {
+function CategoriesList() {
   const { data: categories } = useGetCategoriesQuery();
 
   return (
