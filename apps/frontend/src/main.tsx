@@ -5,8 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
 import store from './app/store';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './styles.scss';
 
 const root = ReactDOM.createRoot(
