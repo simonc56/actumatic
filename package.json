@@ -34,7 +34,7 @@
     "@nestjs/schedule": "^5.0.1",
     "@prisma/client": "6.2.1",
     "@reduxjs/toolkit": "^2.5.1",
-    "@tabler/icons": "^3.30.0",
+    "@tabler/icons-react": "^3.30.0",
     "axios": "^1.6.0",
     "class-validator": "^0.14.1",
     "node-cron": "^3.0.3",
