@@ -1,90 +1,89 @@
-import { Link } from 'react-router-dom';
+import { Burger, Center, Container, Group, Menu } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconChevronDown } from '@tabler/icons-react';
+import ActumaticLogo from '../Logo/ActumaticLogo';
+import classes from './Header.module.css';
 
-function Header() {
-  return (
-    <nav
-      className="navbar navbar-expand-lg bg-body-tertiary"
-      data-bs-theme="dark"
-    >
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="#">
-          Actumatic
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+const links = [
+  { link: '/about', label: 'Features' },
+  {
+    link: '#1',
+    label: 'Catégories',
+    links: [
+      { link: '/docs', label: 'Numérique' },
+      { link: '/resources', label: 'Mobile' },
+      { link: '/community', label: 'Pro' },
+    ],
+  },
+  { link: '/about', label: 'Filtres' },
+  { link: '/pricing', label: 'Pricing' },
+  {
+    link: '#2',
+    label: 'Support',
+    links: [
+      { link: '/faq', label: 'FAQ' },
+      { link: '/demo', label: 'Book a demo' },
+      { link: '/forums', label: 'Forums' },
+    ],
+  },
+];
+
+export default function Header() {
+  const [opened, { toggle }] = useDisclosure(false);
+
+  const items = links.map((link) => {
+    const menuItems = link.links?.map((item) => (
+      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+    ));
+
+    if (menuItems) {
+      return (
+        <Menu
+          key={link.label}
+          trigger="hover"
+          transitionProps={{ exitDuration: 0 }}
+          withinPortal
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="#">
-                Accueil
-              </Link>
-            </li>
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Catégories
-              </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="#">
-                    Numérique
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="#">
-                    Mobile
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="#">
-                    Something else here
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="#">
-                Filtres
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link disabled" aria-disabled="true" to="">
-                Dates
-              </Link>
-            </li>
-          </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Mot clé"
-              aria-label="Chercher"
-            />
-            <button className="btn btn-outline-secondary" type="submit">
-              Chercher
-            </button>
-          </form>
+          <Menu.Target>
+            <a
+              href={link.link}
+              className={classes.link}
+              onClick={(event) => event.preventDefault()}
+            >
+              <Center>
+                <span className={classes.linkLabel}>{link.label}</span>
+                <IconChevronDown size={14} stroke={1.5} />
+              </Center>
+            </a>
+          </Menu.Target>
+          <Menu.Dropdown>{menuItems}</Menu.Dropdown>
+        </Menu>
+      );
+    }
+
+    return (
+      <a
+        key={link.label}
+        href={link.link}
+        className={classes.link}
+        onClick={(event) => event.preventDefault()}
+      >
+        {link.label}
+      </a>
+    );
+  });
+
+  return (
+    <header className={classes.header}>
+      <Container size="md">
+        <div className={classes.inner}>
+          <ActumaticLogo />
+          <Group gap={5} visibleFrom="sm">
+            {items}
+          </Group>
+          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
         </div>
-      </div>
-    </nav>
+      </Container>
+    </header>
   );
 }
-
-export default Header;
