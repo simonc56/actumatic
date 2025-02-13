@@ -38,9 +38,7 @@ export class ScheduledTaskService {
             );
           }
         }
-        this.logger.log(
-          `Saved ${newsToAdd.length} news in DB from ${provider.name}`,
-        );
+        this.logger.log(`${newsToAdd.length} news saved in DB.`);
       } catch (error) {
         this.logger.error(`Error fetching news from ${provider.name}:`, error);
       }
