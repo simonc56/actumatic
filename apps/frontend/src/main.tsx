@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
 import store from './app/store';
 import './styles.scss';
+import { theme } from './theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -15,7 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <MantineProvider>
+      <MantineProvider theme={theme} defaultColorScheme="auto">
         <BrowserRouter>
           <App />
         </BrowserRouter>
