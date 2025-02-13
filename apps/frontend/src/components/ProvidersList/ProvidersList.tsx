@@ -14,10 +14,7 @@ function ProvidersList({ category }: ProvidersListProps) {
     <div className="category">
       <h1 className="category-title">{category.name}</h1>
       {providers?.map((provider) => (
-        <div className="provider-list" key={provider.id}>
-          <h2>{provider.name}</h2>
-          <NewsList providerId={provider.id} />
-        </div>
+        <NewsList provider={provider} key={provider.id} />
       ))}
     </div>
   );
