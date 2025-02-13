@@ -77,7 +77,7 @@ export default function Header() {
     <header className={classes.header}>
       <Container size="md">
         <div className={classes.inner}>
-          <ActumaticLogo />
+          <ActumaticLogo className={classes.logo} />
           <Group gap={5} visibleFrom="sm">
             {items}
           </Group>
