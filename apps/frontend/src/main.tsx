@@ -1,10 +1,11 @@
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './app/app';
 import store from './app/store';
-
 import './styles.scss';
 
 const root = ReactDOM.createRoot(
@@ -14,9 +15,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <MantineProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </MantineProvider>
     </Provider>
   </StrictMode>,
 );
