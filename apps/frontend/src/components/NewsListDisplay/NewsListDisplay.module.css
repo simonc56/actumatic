@@ -1,0 +1,13 @@
+.tableHeader {
+  color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-gray-4));
+}
+
+.newsTitle {
+  text-decoration: none;
+  color: inherit;
+}
+
+.newsTitle:hover {
+  text-decoration: none;
+  color: light-dark(var(--mantine-color-dark), var(--mantine-color-gray-1));
+}

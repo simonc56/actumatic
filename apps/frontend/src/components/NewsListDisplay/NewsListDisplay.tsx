@@ -1,5 +1,6 @@
 import { Anchor, Table } from '@mantine/core';
 import { isoToTimeString } from 'src/utils/datetime';
+import classes from './NewsListDisplay.module.css';
 
 type Props = {
   providerName: string;
@@ -26,7 +27,13 @@ function NewsListDisplay({ providerName, news }: Props) {
             whiteSpace: 'nowrap',
           }}
         >
-          <Anchor href={news.url} target="_blank" c="inherit" fz={14}>
+          <Anchor
+            href={news.url}
+            target="_blank"
+            // c="inherit"
+            fz={14}
+            className={classes.newsTitle}
+          >
             {news.title}
           </Anchor>
         </Table.Td>
@@ -50,7 +57,12 @@ function NewsListDisplay({ providerName, news }: Props) {
       >
         <Table.Thead>
           <Table.Tr>
-            <Table.Th colSpan={2} fz={24} bg="blue.9" c="gray.3">
+            <Table.Th
+              colSpan={2}
+              fz={24}
+              bg="blue.9"
+              className={classes.tableHeader}
+            >
               {providerName}
             </Table.Th>
           </Table.Tr>
