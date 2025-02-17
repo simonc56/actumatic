@@ -34,32 +34,30 @@ function NewsListDisplay({ providerName, news }: Props) {
     )) ?? [];
 
   return (
-    <Table
-      striped
-      highlightOnHover
-      withRowBorders={false}
-      verticalSpacing={3}
-      // style={{ borderRadius: 5 }}
+    <div
+      style={{
+        borderRadius: '8px',
+        border: `1px solid rgba(128, 128, 128, .2)`,
+        overflow: 'hidden',
+        marginBottom: '20px',
+      }}
     >
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th
-            colSpan={2}
-            fz={24}
-            bg="blue.9"
-            c="gray.3"
-            style={{
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {providerName}
-          </Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+      <Table
+        striped
+        highlightOnHover
+        withRowBorders={false}
+        verticalSpacing={3}
+      >
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th colSpan={2} fz={24} bg="blue.9" c="gray.3">
+              {providerName}
+            </Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+    </div>
   );
 }
 
