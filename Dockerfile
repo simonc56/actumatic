@@ -18,6 +18,7 @@ RUN pnpm nx build frontend --configuration=production
 FROM node:22-alpine AS backend
 WORKDIR /app
 COPY --from=build /app/dist /app/dist
+COPY --from=build /app/apps/backend/prisma /app/prisma
 COPY --from=build /app/node_modules /app/node_modules
 COPY package.json .
 COPY entrypoint.sh /entrypoint.sh
