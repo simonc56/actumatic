@@ -21,6 +21,7 @@ function NewsListDisplay({ providerName, news }: Props) {
           {isoToTimeString(news.createdAt)}
         </Table.Td>
         <Table.Td
+          maw="md"
           style={{
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -30,7 +31,6 @@ function NewsListDisplay({ providerName, news }: Props) {
           <Anchor
             href={news.url}
             target="_blank"
-            // c="inherit"
             fz={14}
             className={classes.newsTitle}
           >
