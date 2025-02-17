@@ -70,7 +70,7 @@ export const server = setupServer(
   }),
 
   // News endpoints
-  http.get(`${baseUrl}/news`, () => {
+  http.get(`${baseUrl}/news/all`, () => {
     return Response.json(mockNews);
   }),
   http.get(`${baseUrl}/news/:id`, ({ params }) => {
