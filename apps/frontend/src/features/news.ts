@@ -1,16 +1,22 @@
 import { INewsDto } from '@shared-libs';
-import { INews, NewsParamsType } from 'src/@types/news';
+import { INews, ISortedNews, NewsParamsType } from 'src/@types/news';
 import { enhancedApi } from '../app/services/api';
 
 const newsApi = enhancedApi
-  .enhanceEndpoints({ addTagTypes: ['News', 'AllNews'] })
+  .enhanceEndpoints({ addTagTypes: ['News', 'AllNews', 'SortedNews'] })
   .injectEndpoints({
     endpoints: (builder) => ({
       getAllNews: builder.query<INews[], NewsParamsType>({
         query: ({ after, before }) => {
-          return { url: `news`, params: { after, before } };
+          return { url: `news/all`, params: { after, before } };
         },
         providesTags: ['AllNews'],
+      }),
+      getSortedNews: builder.query<ISortedNews, NewsParamsType>({
+        query: ({ after, before }) => {
+          return { url: `news/sorted`, params: { after, before } };
+        },
+        providesTags: ['SortedNews'],
       }),
       getAllNewsByProvider: builder.query<INews[], NewsParamsType>({
         query: ({ providerId, after, before }) => {
@@ -38,6 +44,7 @@ const newsApi = enhancedApi
 
 export const {
   useGetAllNewsQuery,
+  useGetSortedNewsQuery,
   useGetAllNewsByProviderQuery,
   useGetNewsQuery,
   useCreateNewsMutation,

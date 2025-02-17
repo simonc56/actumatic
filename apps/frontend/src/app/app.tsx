@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from 'react-router-dom';
-import CategoriesList from 'src/components/CategoriesList/CategoriesList';
 import Header from 'src/components/Header/Header';
+import SortedNewsList from 'src/components/SortedNewsList/SortedNewsList';
 
 export function App() {
   return (
@@ -12,7 +12,7 @@ export function App() {
       {/* Feel free to move and update them to fit your needs */}
       <br />
       <div className="container py-4 px-3 mx-auto">
-        <CategoriesList />
+        <SortedNewsList />
       </div>
       <br />
       <div role="navigation">
