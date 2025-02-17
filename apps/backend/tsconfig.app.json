@@ -6,12 +6,13 @@
     "declaration": true,
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "types": ["node"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "target": "es2021"
   },
-  "include": ["./src/**/*.ts", "../../libs/**/*.ts"],
+  "include": ["./src/**/*.ts", "./src/**/*.json", "../../libs/**/*.ts"],
   "exclude": [
     "jest.config.ts",
     "src/**/*.spec.ts",
