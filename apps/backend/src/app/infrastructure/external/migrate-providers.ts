@@ -18,8 +18,8 @@ interface FeedProvider {
 
 async function populateDB() {
   try {
-    // Lecture du fichier JSON
-    Logger.log('📖 Lecture du fichier des providers...');
+    Logger.log('📍 Migration Catégories et Fournisseurs');
+    // Logger.log('📖 Lecture du fichier des Catégories/Fournisseurs');
     // const filePath = path.join(__dirname, 'france-tech-providers.json');
     // const fileContent = await fs.readFile(filePath, 'utf-8');
     // const providersData: ProvidersFile = JSON.parse(fileContent);
@@ -47,7 +47,7 @@ async function populateDB() {
 
     if (categoryCreationPromises.length > 0) {
       Logger.log(
-        `🆕 Création de ${categoryCreationPromises.length} nouvelle(s) catégorie(s)...`,
+        `🆕 Création de ${categoryCreationPromises.length} nouvelle(s) catégorie(s)`,
       );
       await Promise.all(categoryCreationPromises);
     } else {
@@ -86,7 +86,7 @@ async function populateDB() {
 
     if (providerCreationPromises.length > 0) {
       Logger.log(
-        `🔄 Création de ${providerCreationPromises.length} nouveau(x) fournisseur(s)...`,
+        `🔄 Création de ${providerCreationPromises.length} nouveau(x) fournisseur(s)`,
       );
       const createdProviders = await Promise.all(providerCreationPromises);
       Logger.log('Fournisseurs créés:');
@@ -97,7 +97,7 @@ async function populateDB() {
       Logger.log('✓ Aucun nouveau fournisseur à créer');
     }
 
-    Logger.log('\x1b[32m%s\x1b[0m', '✨ Migration terminée avec succès!');
+    Logger.log('🏁 Migration terminée!');
 
     // Affichage du résumé
     const summary = await prisma.$transaction([
@@ -105,11 +105,11 @@ async function populateDB() {
       prisma.provider.count(),
     ]);
 
-    Logger.log('\nÉtat actuel de la base de données:');
+    Logger.log('État actuel de la base de données:');
     Logger.log(`📁 Catégories: ${summary[0]}`);
     Logger.log(`🔗 Fournisseurs: ${summary[1]}`);
   } catch (error) {
-    Logger.error('\x1b[31m%s\x1b[0m', '❌ Erreur lors de la migration:');
+    Logger.error('❌ Erreur lors de la migration:');
     Logger.error(error);
     // process.exit(1);
   }
