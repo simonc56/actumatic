@@ -12,3 +12,13 @@ export type INewsDto = {
   providerId: string;
   createdAt: string;
 };
+
+export type ISortedNewsDto = {
+  id: string;
+  name: string;
+  providers: {
+    id: string;
+    name: string;
+    news: INewsDto[];
+  }[];
+}[];
