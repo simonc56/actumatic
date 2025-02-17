@@ -6,14 +6,7 @@ export function App() {
   return (
     <div>
       <Header />
-
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <div className="container py-4 px-3 mx-auto">
-        <SortedNewsList />
-      </div>
+      <SortedNewsList />
       <br />
       <div role="navigation">
         <ul>
