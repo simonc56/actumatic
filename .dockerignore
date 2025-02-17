@@ -1,0 +1,13 @@
+node_modules
+dist
+secrets
+tmp
+.cursor
+.github
+.vscode
+.nx
+.git
+.gitignore
+Dockerfile
+.dockerignore
+**/.env
