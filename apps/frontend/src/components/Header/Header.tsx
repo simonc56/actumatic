@@ -5,7 +5,6 @@ import ActumaticLogo from '../Logo/ActumaticLogo';
 import classes from './Header.module.css';
 
 const links = [
-  { link: '/about', label: 'Features' },
   {
     link: '#1',
     label: 'Catégories',
@@ -15,15 +14,23 @@ const links = [
       { link: '/community', label: 'Pro' },
     ],
   },
-  { link: '/about', label: 'Filtres' },
-  { link: '/pricing', label: 'Pricing' },
+  { link: '/filters', label: 'Filtres' },
+  {
+    link: '/dates',
+    label: 'Dates',
+    links: [
+      { link: '/today', label: "Aujourd'hui" },
+      { link: '/yesterday', label: 'Hier' },
+      { link: '/all', label: 'Tout' },
+    ],
+  },
   {
     link: '#2',
-    label: 'Support',
+    label: 'A Propos',
     links: [
       { link: '/faq', label: 'FAQ' },
-      { link: '/demo', label: 'Book a demo' },
-      { link: '/forums', label: 'Forums' },
+      { link: '/support', label: 'Support' },
+      { link: '/blog', label: 'Blog' },
     ],
   },
 ];
