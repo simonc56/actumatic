@@ -2,7 +2,8 @@ import { useGetSortedNewsQuery } from 'src/features/news';
 import ProvidersListDisplay from '../ProvidersListDisplay/ProvidersListDisplay';
 
 function SortedNewsList() {
-  const { data: sortedNews } = useGetSortedNewsQuery({});
+  const today = new Date().toISOString().split('T')[0];
+  const { data: sortedNews } = useGetSortedNewsQuery({ after: today });
   if (!sortedNews?.length) return null;
 
   return (
