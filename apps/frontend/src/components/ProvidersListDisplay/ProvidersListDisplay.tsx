@@ -1,5 +1,6 @@
+import { Title } from '@mantine/core';
 import NewsListDisplay from '../NewsListDisplay/NewsListDisplay';
-import './ProvidersListDisplay.scss';
+import classes from './ProvidersListDisplay.module.css';
 
 type ProvidersListProps = {
   categoryName: string;
@@ -21,8 +22,10 @@ function ProvidersListDisplay({
 }: ProvidersListProps) {
   if (!newsByProviders?.length) return null;
   return (
-    <div className="category">
-      <h1 className="category-title">{categoryName}</h1>
+    <>
+      <Title order={2} className={classes.categoryTitle}>
+        {categoryName}
+      </Title>
       {newsByProviders.map((provider) => (
         <NewsListDisplay
           providerName={provider.name}
@@ -30,7 +33,7 @@ function ProvidersListDisplay({
           news={provider.news}
         />
       ))}
-    </div>
+    </>
   );
 }
 

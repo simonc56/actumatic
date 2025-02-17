@@ -1,0 +1,5 @@
+.categoryTitle {
+  color: var(--mantine-color-blue-9);
+  font-weight: 700;
+  margin-top: 20px;
+}

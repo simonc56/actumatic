@@ -46,7 +46,7 @@ function NewsListDisplay({ providerName, news }: Props) {
         borderRadius: '8px',
         border: `1px solid rgba(128, 128, 128, .2)`,
         overflow: 'hidden',
-        marginBottom: '20px',
+        marginTop: '16px',
       }}
     >
       <Table
@@ -59,7 +59,7 @@ function NewsListDisplay({ providerName, news }: Props) {
           <Table.Tr>
             <Table.Th
               colSpan={2}
-              fz={24}
+              fz={20}
               bg="blue.9"
               className={classes.tableHeader}
             >
