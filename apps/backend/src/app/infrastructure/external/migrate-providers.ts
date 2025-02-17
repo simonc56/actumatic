@@ -1,6 +1,6 @@
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import { PrismaService } from '../src/app/infrastructure/persistence/prisma.service';
+import { Logger } from '@nestjs/common';
+import { PrismaService } from '../persistence/prisma.service';
+import providersData from './france-tech-providers.json';
 
 const prisma = new PrismaService();
 
@@ -12,23 +12,23 @@ interface FeedProvider {
   feedUrl: string;
 }
 
-interface ProvidersFile {
-  feeds: FeedProvider[];
-}
+// interface ProvidersFile {
+//   feeds: FeedProvider[];
+// }
 
-async function main() {
+async function populateDB() {
   try {
     // Lecture du fichier JSON
-    console.log('📖 Lecture du fichier de configuration...');
-    const filePath = path.join(__dirname, 'france-tech-providers.json');
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const providersData: ProvidersFile = JSON.parse(fileContent);
+    Logger.log('📖 Lecture du fichier des providers...');
+    // const filePath = path.join(__dirname, 'france-tech-providers.json');
+    // const fileContent = await fs.readFile(filePath, 'utf-8');
+    // const providersData: ProvidersFile = JSON.parse(fileContent);
 
     // Extraction des catégories uniques du fichier
     const uniqueCategories = [
       ...new Set(providersData.feeds.map((feed) => feed.category)),
     ];
-    console.log(`📋 Catégories trouvées: ${uniqueCategories.join(', ')}`);
+    Logger.log(`📋 Catégories trouvées: ${uniqueCategories.join(', ')}`);
 
     // Récupération des catégories existantes
     const existingCategories = await prisma.category.findMany();
@@ -46,12 +46,12 @@ async function main() {
       );
 
     if (categoryCreationPromises.length > 0) {
-      console.log(
+      Logger.log(
         `🆕 Création de ${categoryCreationPromises.length} nouvelle(s) catégorie(s)...`,
       );
       await Promise.all(categoryCreationPromises);
     } else {
-      console.log('✓ Aucune nouvelle catégorie à créer');
+      Logger.log('✓ Aucune nouvelle catégorie à créer');
     }
 
     // Récupération de toutes les catégories (incluant les nouvelles)
@@ -85,19 +85,19 @@ async function main() {
       });
 
     if (providerCreationPromises.length > 0) {
-      console.log(
+      Logger.log(
         `🔄 Création de ${providerCreationPromises.length} nouveau(x) fournisseur(s)...`,
       );
       const createdProviders = await Promise.all(providerCreationPromises);
-      console.log('Fournisseurs créés:');
+      Logger.log('Fournisseurs créés:');
       createdProviders.forEach((provider) => {
-        console.log(`- ${provider.name} (${provider.url})`);
+        Logger.log(`- ${provider.name} (${provider.url})`);
       });
     } else {
-      console.log('✓ Aucun nouveau fournisseur à créer');
+      Logger.log('✓ Aucun nouveau fournisseur à créer');
     }
 
-    console.log('\x1b[32m%s\x1b[0m', '✨ Migration terminée avec succès!');
+    Logger.log('\x1b[32m%s\x1b[0m', '✨ Migration terminée avec succès!');
 
     // Affichage du résumé
     const summary = await prisma.$transaction([
@@ -105,21 +105,23 @@ async function main() {
       prisma.provider.count(),
     ]);
 
-    console.log('\nÉtat actuel de la base de données:');
-    console.log(`📁 Catégories: ${summary[0]}`);
-    console.log(`🔗 Fournisseurs: ${summary[1]}`);
+    Logger.log('\nÉtat actuel de la base de données:');
+    Logger.log(`📁 Catégories: ${summary[0]}`);
+    Logger.log(`🔗 Fournisseurs: ${summary[1]}`);
   } catch (error) {
-    console.error('\x1b[31m%s\x1b[0m', '❌ Erreur lors de la migration:');
-    console.error(error);
-    process.exit(1);
+    Logger.error('\x1b[31m%s\x1b[0m', '❌ Erreur lors de la migration:');
+    Logger.error(error);
+    // process.exit(1);
   }
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+export default async function main() {
+  populateDB()
+    .catch((e) => {
+      Logger.error(e);
+      // process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}
