@@ -18,3 +18,13 @@ export class News {
     return new News(news as News);
   }
 }
+
+export type SortedNews = {
+  id: string;
+  name: string;
+  providers: {
+    id: string;
+    name: string;
+    news: Omit<News, 'providerId'>[];
+  }[];
+}[];
