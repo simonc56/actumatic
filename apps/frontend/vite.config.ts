@@ -20,6 +20,7 @@ export default defineConfig({
     alias: {
       '@shared-libs': path.resolve(__dirname, '../../libs/src/index.ts'),
       src: path.resolve(__dirname, './src'),
+      '@tabler/icons-react': '@tabler/icons-react/dist/esm/icons/index.mjs',
     },
   },
   // Uncomment this if you are using workers.
@@ -32,6 +33,16 @@ export default defineConfig({
     reportCompressedSize: true,
     commonjsOptions: {
       transformMixedEsModules: true,
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          mantine: ['@mantine/core', '@mantine/hooks'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'redux-vendor': ['@reduxjs/toolkit', 'react-redux'],
+          icons: ['@tabler/icons-react'],
+        },
+      },
     },
   },
   test: {
