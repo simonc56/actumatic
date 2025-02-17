@@ -1,3 +1,4 @@
+import { Container } from '@mantine/core';
 import { useGetSortedNewsQuery } from 'src/features/news';
 import ProvidersListDisplay from '../ProvidersListDisplay/ProvidersListDisplay';
 
@@ -7,7 +8,7 @@ function SortedNewsList() {
   if (!sortedNews?.length) return null;
 
   return (
-    <main className="sorted-news-list">
+    <Container>
       {sortedNews.map((category) => (
         <ProvidersListDisplay
           key={category.id}
@@ -15,7 +16,7 @@ function SortedNewsList() {
           newsByProviders={category.providers}
         />
       ))}
-    </main>
+    </Container>
   );
 }
 
