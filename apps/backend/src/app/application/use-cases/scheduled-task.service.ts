@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 
 import { RSS2NewsParser } from '../../infrastructure/external/rss2.parser';
-import { UpsertNewsUseCase } from './news.use-case';
 import { GetProvidersUseCase } from './provider.use-case';
+import { UpsertNewsUseCase } from './upsert-news.use-case';
 
 @Injectable()
 export class ScheduledTaskService {
