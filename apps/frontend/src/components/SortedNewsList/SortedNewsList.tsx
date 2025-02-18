@@ -4,7 +4,10 @@ import ProvidersListDisplay from '../ProvidersListDisplay/ProvidersListDisplay';
 
 function SortedNewsList() {
   const today = new Date().toISOString().split('T')[0];
-  const { data: sortedNews } = useGetSortedNewsQuery({ after: today });
+  const { data: sortedNews } = useGetSortedNewsQuery(
+    { after: today },
+    { refetchOnFocus: true, refetchOnReconnect: true },
+  );
   if (!sortedNews?.length) return null;
 
   return (
