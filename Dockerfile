@@ -11,16 +11,19 @@ COPY . .
 # Generate Prisma Client before building the backend
 RUN pnpm prisma generate
 # Build the backend and frontend
-RUN pnpm nx build backend --configuration=production
-RUN pnpm nx build frontend --configuration=production
+RUN pnpm dlx nx build backend --configuration=production
+RUN pnpm dlx nx build frontend --configuration=production
 
 # -- Backend Stage --
 FROM node:22-alpine AS backend
 WORKDIR /app
-COPY --from=build /app/dist /app/dist
-COPY --from=build /app/apps/backend/prisma /app/prisma
-COPY --from=build /app/node_modules /app/node_modules
-COPY package.json .
+RUN corepack enable && corepack prepare pnpm@latest --activate
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --prod --frozen-lockfile
+COPY --from=build /app/apps/backend/prisma ./prisma
+COPY --from=build /app/dist ./dist
+# Generate Prisma Client before building the backend
+RUN pnpm prisma generate --schema=./prisma/schema.prisma
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
