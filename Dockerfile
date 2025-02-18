@@ -6,7 +6,7 @@ WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install  --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 COPY . .
 # Generate Prisma Client before building the backend
 RUN pnpm prisma generate
@@ -26,7 +26,7 @@ RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # -- Frontend Stage --
-FROM nginx:alpine AS frontend
+FROM nginx:alpine-slim AS frontend
 WORKDIR /usr/share/nginx/html
 
 # Copy built frontend files
