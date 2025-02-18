@@ -14,7 +14,6 @@
     "migrate": "nx migrate",
     "update": "nx update",
     "seed": "tsx apps/backend/prisma/seed.ts",
-    "migrate-providers": "tsx apps/backend/prisma/migrate-providers.ts",
     "start": "nx run-many --target=serve --projects=frontend,backend",
     "backend:start": "nx serve backend",
     "backend:build": "nx build backend",
