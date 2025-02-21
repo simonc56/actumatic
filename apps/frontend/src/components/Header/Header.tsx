@@ -102,7 +102,7 @@ export default function Header() {
 
   return (
     <header className={classes.header}>
-      <Container size="md">
+      <Container size="2xl">
         <div className={classes.inner}>
           <ActumaticLogo />
           <Group gap={5} visibleFrom="sm">

@@ -9,7 +9,7 @@ export function App() {
   return (
     <div>
       <Header />
-      <Container>
+      <Container size="2xl">
         <Routes>
           <Route path="/category/:id" element={<CategoryNewsPage />} />
           <Route path="/provider/:id" element={<ProviderNewsPage />} />
