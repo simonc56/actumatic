@@ -1,8 +1,9 @@
-import { CreateCategoryDto } from "../../application/dtos/create-category.dto";
+import { CreateCategoryDto } from '../../application/dtos/create-category.dto';
 
 export class Category {
   id?: string;
   name!: string;
+  slug!: string;
 
   constructor(props: Category) {
     Object.assign(this, props);
@@ -13,5 +14,4 @@ export class Category {
   static create(category: CreateCategoryDto): Category {
     return new Category(category);
   }
-
 }

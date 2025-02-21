@@ -20,7 +20,11 @@ export class CreateCategoryUseCase {
     const savedCategory = await this.userRepository.save(category);
     // éviter de retourner l'entité directement
     // faire un mapper si besoin
-    return { id: savedCategory.id!, name: savedCategory.name };
+    return {
+      id: savedCategory.id!,
+      name: savedCategory.name,
+      slug: savedCategory.slug,
+    };
   }
 }
 
@@ -33,7 +37,8 @@ export class GetCategoryUseCase {
 
   async execute(id: string): Promise<ICategoryDto | null> {
     const category = await this.categoryRepository.findById(id);
-    if (category) return { id: category.id!, name: category.name };
+    if (category)
+      return { id: category.id!, name: category.name, slug: category.slug };
     return null;
   }
 }
@@ -68,6 +73,7 @@ export class GetCategoriesUseCase {
     return categories.map((category) => ({
       id: category.id!,
       name: category.name,
+      slug: category.slug,
     }));
   }
 }

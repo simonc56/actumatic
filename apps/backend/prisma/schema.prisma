@@ -43,5 +43,6 @@ model News {
 model Category {
   id       String     @id @default(uuid()) @db.Uuid
   name     String
+  slug     String    @unique
   Provider Provider[]
 }

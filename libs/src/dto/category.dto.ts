@@ -5,4 +5,5 @@ export type ICreateCategoryDto = {
 export type ICategoryDto = {
   id: string;
   name: string;
+  slug: string;
 };

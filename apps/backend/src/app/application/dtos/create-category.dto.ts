@@ -5,4 +5,8 @@ export class CreateCategoryDto implements ICreateCategoryDto {
   @IsString()
   @IsNotEmpty()
   name!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  slug!: string;
 }

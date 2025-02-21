@@ -21,6 +21,7 @@ export class CategoryRepository implements ICategoryRepository {
     const saved = await this.prisma.category.create({
       data: {
         name: category.name,
+        slug: category.slug,
       },
     });
     return new Category(saved);

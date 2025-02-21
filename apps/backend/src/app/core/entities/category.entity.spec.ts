@@ -5,6 +5,7 @@ describe('Category Entity', () => {
     const categoryData = {
       id: '123',
       name: 'Econews',
+      slug: 'econews',
     };
 
     const category = new Category(categoryData);
@@ -16,6 +17,7 @@ describe('Category Entity', () => {
   it('should allow creating an instance without id', () => {
     const categoryData = {
       name: 'Econews',
+      slug: 'econews',
     };
 
     const category = new Category(categoryData);
