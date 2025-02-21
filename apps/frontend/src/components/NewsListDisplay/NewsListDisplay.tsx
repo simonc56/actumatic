@@ -42,7 +42,6 @@ function NewsListDisplay({ providerName, news }: Props) {
         borderRadius: '8px',
         border: `1px solid rgba(128, 128, 128, .2)`,
         overflow: 'hidden',
-        marginTop: '16px',
         maxWidth: '946px',
       }}
     >
