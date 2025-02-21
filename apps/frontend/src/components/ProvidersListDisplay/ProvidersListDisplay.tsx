@@ -57,7 +57,7 @@ function ProvidersListDisplay({
       </Title>
       <Flex
         direction="column"
-        gap="xs"
+        gap="lg"
         wrap="wrap"
         justify="flex-start"
         style={
