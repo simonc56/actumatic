@@ -1,11 +1,7 @@
-import { Title } from '@mantine/core';
+import logo from '../../../public/logo-actumatic-blue.png';
 
-function ActumaticLogo({ className }: { className?: string }) {
-  return (
-    <Title order={1} className={className}>
-      Actumatic
-    </Title>
-  );
+function ActumaticLogo() {
+  return <img src={logo} height={28} />;
 }
 
 export default ActumaticLogo;
