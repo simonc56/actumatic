@@ -1,17 +1,12 @@
-import { Container } from '@mantine/core';
-import { useGetSortedNewsQuery } from 'src/features/news';
+import useFetchSortedNews from 'src/hooks/useFetchSortedNews';
 import ProvidersListDisplay from '../ProvidersListDisplay/ProvidersListDisplay';
 
 function SortedNewsList() {
-  const today = new Date().toISOString().split('T')[0];
-  const { data: sortedNews } = useGetSortedNewsQuery(
-    { after: today },
-    { refetchOnFocus: true, refetchOnReconnect: true },
-  );
+  const sortedNews = useFetchSortedNews();
   if (!sortedNews?.length) return null;
 
   return (
-    <Container>
+    <>
       {sortedNews.map((category) => (
         <ProvidersListDisplay
           key={category.id}
@@ -19,7 +14,7 @@ function SortedNewsList() {
           newsByProviders={category.providers}
         />
       ))}
-    </Container>
+    </>
   );
 }
 
