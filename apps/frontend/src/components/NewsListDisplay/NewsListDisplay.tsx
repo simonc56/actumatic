@@ -59,7 +59,8 @@ function NewsListDisplay({ providerName, news }: Props) {
           <Table.Tr>
             <Table.Th
               colSpan={2}
-              fz={20}
+              fz={18}
+              fw={600}
               bg="blue.9"
               className={classes.tableHeader}
             >
