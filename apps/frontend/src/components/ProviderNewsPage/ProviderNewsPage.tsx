@@ -16,7 +16,11 @@ function ProviderNewsPage() {
   if (!news?.length) return null;
   return (
     <div>
-      <NewsListDisplay providerName={providerName} news={news} />
+      <NewsListDisplay
+        providerId={providerId}
+        providerName={providerName}
+        news={news}
+      />
     </div>
   );
 }

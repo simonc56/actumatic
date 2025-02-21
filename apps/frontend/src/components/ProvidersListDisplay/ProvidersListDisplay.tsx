@@ -66,6 +66,7 @@ function ProvidersListDisplay({
       >
         {newsByProviders.map((provider) => (
           <NewsListDisplay
+            providerId={provider.id}
             providerName={provider.name}
             key={provider.id}
             news={provider.news}

@@ -1,14 +1,16 @@
 import { Anchor, Table } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
+import { Link } from 'react-router-dom';
 import { isoToTimeString } from 'src/utils/datetime';
 import classes from './NewsListDisplay.module.css';
 
 type Props = {
+  providerId: string;
   providerName: string;
   news: INewsDto[];
 };
 
-function NewsListDisplay({ providerName, news }: Props) {
+function NewsListDisplay({ providerId, providerName, news }: Props) {
   if (!news.length) return null;
   const rows =
     news.map((news) => (
@@ -60,7 +62,15 @@ function NewsListDisplay({ providerName, news }: Props) {
               bg="blue.9"
               className={classes.tableHeader}
             >
-              {providerName}
+              <Link
+                to={`provider/${providerId}`}
+                style={{
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                {providerName}
+              </Link>
             </Table.Th>
           </Table.Tr>
         </Table.Thead>
