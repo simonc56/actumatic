@@ -1,6 +1,8 @@
 import { Burger, Center, Container, Group, Menu } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
+import useFetchSortedNews from 'src/hooks/useFetchSortedNews';
 import ActumaticLogo from '../Logo/ActumaticLogo';
 import classes from './Header.module.css';
 
@@ -9,23 +11,23 @@ const links = [
     link: '#1',
     label: 'Catégories',
     links: [
-      { link: '/docs', label: 'Numérique' },
-      { link: '/resources', label: 'Mobile' },
-      { link: '/community', label: 'Pro' },
+      { link: '/category/numerique', label: 'Numérique' },
+      { link: '/category/mobile', label: 'Mobile' },
+      { link: '/category/pro', label: 'Pro' },
     ],
   },
   { link: '/filters', label: 'Filtres' },
   {
-    link: '/dates',
+    link: '#2',
     label: 'Dates',
     links: [
-      { link: '/today', label: "Aujourd'hui" },
-      { link: '/yesterday', label: 'Hier' },
-      { link: '/all', label: 'Tout' },
+      { link: '/', label: "Aujourd'hui" },
+      { link: '/?date=yesterday', label: 'Hier' },
+      { link: '/?date=all-time', label: 'Tout' },
     ],
   },
   {
-    link: '#2',
+    link: '#3',
     label: 'A Propos',
     links: [
       { link: '/faq', label: 'FAQ' },
@@ -37,10 +39,28 @@ const links = [
 
 export default function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-
+  const sortedNews = useFetchSortedNews();
+  const categoryLinks =
+    sortedNews?.map((category) => ({
+      label: category.name,
+      link: `/category/${category.id}`,
+    })) ?? [];
+  categoryLinks.push({ label: 'Toutes', link: '/' });
+  if (categoryLinks.length) links[0].links = categoryLinks;
   const items = links.map((link) => {
     const menuItems = link.links?.map((item) => (
-      <Menu.Item key={item.link}>{item.label}</Menu.Item>
+      <Menu.Item key={item.link}>
+        <Link
+          to={item.link}
+          style={{
+            padding: 0,
+            backgroundColor: 'transparent',
+          }}
+          className={classes.link}
+        >
+          {item.label}
+        </Link>
+      </Menu.Item>
     ));
 
     if (menuItems) {
