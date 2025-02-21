@@ -7,6 +7,7 @@ describe('News Entity', () => {
       title: 'Facebook est racheté par Google',
       url: 'http://econews.com/facebook-est-rachete-par-google',
       providerId: '123-456',
+      createdAt: new Date(),
     };
 
     const news = new News(newsData);
@@ -21,6 +22,7 @@ describe('News Entity', () => {
       title: 'Facebook est racheté par Google',
       url: 'http://econews.com/facebook-est-rachete-par-google',
       providerId: '123-456',
+      createdAt: new Date(),
     };
 
     const news = new News(newsData);
