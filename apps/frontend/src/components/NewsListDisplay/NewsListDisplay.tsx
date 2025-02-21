@@ -1,15 +1,11 @@
 import { Anchor, Table } from '@mantine/core';
+import { INewsDto } from '@shared-libs';
 import { isoToTimeString } from 'src/utils/datetime';
 import classes from './NewsListDisplay.module.css';
 
 type Props = {
   providerName: string;
-  news: {
-    id: string;
-    title: string;
-    url: string;
-    createdAt: string;
-  }[];
+  news: INewsDto[];
 };
 
 function NewsListDisplay({ providerName, news }: Props) {

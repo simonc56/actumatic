@@ -1,4 +1,5 @@
 import { Title } from '@mantine/core';
+import { INewsDto } from '@shared-libs';
 import NewsListDisplay from '../NewsListDisplay/NewsListDisplay';
 import classes from './ProvidersListDisplay.module.css';
 
@@ -7,12 +8,7 @@ type ProvidersListProps = {
   newsByProviders: {
     id: string;
     name: string;
-    news: {
-      id: string;
-      title: string;
-      url: string;
-      createdAt: string;
-    }[];
+    news: INewsDto[];
   }[];
 };
 
