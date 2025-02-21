@@ -1,4 +1,4 @@
-import logo from '../../../public/logo-actumatic-blue.png';
+import logo from '../../assets/logo-actumatic-blue.png';
 
 function ActumaticLogo() {
   return <img src={logo} height={28} />;
