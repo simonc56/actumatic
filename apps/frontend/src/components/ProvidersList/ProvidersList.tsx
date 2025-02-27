@@ -1,6 +1,7 @@
 import { Flex, Title } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
 import { useEffect, useState } from 'react';
+import { getCategoryColor } from 'src/utils/style';
 import NewsList from '../NewsList/NewsList';
 import classes from './ProvidersList.module.css';
 
@@ -49,7 +50,11 @@ function ProvidersList({ categoryName, newsByProviders }: ProvidersListProps) {
   if (!newsByProviders?.length) return null;
   return (
     <>
-      <Title order={2} className={classes.categoryTitle}>
+      <Title
+        order={2}
+        className={classes.categoryTitle}
+        style={{ color: getCategoryColor(categoryName) }}
+      >
         {categoryName}
       </Title>
       <Flex
@@ -67,6 +72,7 @@ function ProvidersList({ categoryName, newsByProviders }: ProvidersListProps) {
             providerName={provider.name}
             key={provider.id}
             news={provider.news}
+            color={getCategoryColor(categoryName)}
           />
         ))}
       </Flex>

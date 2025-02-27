@@ -8,9 +8,10 @@ type Props = {
   providerId: string;
   providerName: string;
   news: INewsDto[];
+  color: string;
 };
 
-function NewsList({ providerId, providerName, news }: Props) {
+function NewsList({ providerId, providerName, news, color }: Props) {
   if (!news.length) return null;
   const rows =
     news.map((news) => (
@@ -61,11 +62,11 @@ function NewsList({ providerId, providerName, news }: Props) {
               colSpan={2}
               fz={18}
               fw={600}
-              bg="blue.9"
+              bg={color}
               className={classes.tableHeader}
             >
               <Link
-                to={`provider/${providerId}`}
+                to={`provider/${providerId}?date=all`}
                 style={{
                   color: 'inherit',
                   textDecoration: 'none',

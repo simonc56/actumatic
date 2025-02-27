@@ -20,6 +20,7 @@ function ProviderNewsPage() {
         providerId={providerId}
         providerName={providerName}
         news={news}
+        color={'#1864ab'}
       />
     </div>
   );
