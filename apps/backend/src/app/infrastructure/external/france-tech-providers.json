@@ -118,6 +118,160 @@
       "category": "Numérique",
       "feedType": "RSS2",
       "feedUrl": "https://korben.info/feed/"
+    },
+    {
+      "name": "Les Mobiles",
+      "url": "https://www.lesmobiles.com",
+      "category": "Mobile",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.lesmobiles.com/rss.xml"
+    },
+    {
+      "name": "Iphon",
+      "url": "https://www.iphon.fr",
+      "category": "Mobile",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.iphon.fr/feed"
+    },
+    {
+      "name": "Mac4Ever",
+      "url": "https://www.mac4ever.com",
+      "category": "Apple",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.mac4ever.com/flux/rss/content/actu"
+    },
+    {
+      "name": "MacGeneration",
+      "url": "https://www.macg.co",
+      "category": "Apple",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.macg.co/news/feed"
+    },
+    {
+      "name": "MacBidouille",
+      "url": "https://www.macbidouille.com",
+      "category": "Apple",
+      "feedType": "RSS2",
+      "feedUrl": "https://macbidouille.com/rss"
+    },
+    {
+      "name": "Linuxfr",
+      "url": "https://linuxfr.org",
+      "category": "Linux",
+      "feedType": "RSS2",
+      "feedUrl": "https://linuxfr.org/news.atom"
+    },
+    {
+      "name": "LeMagIT",
+      "url": "https://www.lemagit.fr",
+      "category": "Pro",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.lemagit.fr/rss/ContentSyndication.xml"
+    },
+    {
+      "name": "Silicon",
+      "url": "https://www.silicon.fr",
+      "category": "Pro",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.silicon.fr/rss/toutelinfo"
+    },
+    {
+      "name": "L'Usine Digitale",
+      "url": "https://www.usine-digitale.fr",
+      "category": "Pro",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.usine-digitale.fr/rss"
+    },
+    {
+      "name": "Le Big Data",
+      "url": "https://www.lebigdata.fr",
+      "category": "Pro",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.lebigdata.fr/feed"
+    },
+    {
+      "name": "Programmez",
+      "url": "https://www.programmez.com",
+      "category": "Dev",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.programmez.com/rss.xml"
+    },
+    {
+      "name": "Univers Freebox",
+      "url": "https://www.universfreebox.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.universfreebox.com/rubrique/news,breve,actu-telecom/feed"
+    },
+    {
+      "name": "Cowcotland",
+      "url": "https://www.cowcotland.com",
+      "category": "Hardware",
+      "feedType": "RSS2",
+      "feedUrl": "https://feeds.feedburner.com/cowcotland"
+    },
+    {
+      "name": "Hardware & Co",
+      "url": "https://www.hardwareand.co",
+      "category": "Hardware",
+      "feedType": "RSS2",
+      "feedUrl": "https://hardwareand.co/all-content?format=feed&type=rss"
+    },
+    {
+      "name": "Maison et Domotique",
+      "url": "https://www.maison-et-domotique.com",
+      "category": "Domotique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.maison-et-domotique.com/feed/"
+    },
+    {
+      "name": "Domo Blog",
+      "url": "https://www.domo-blog.fr",
+      "category": "Domotique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.domo-blog.fr/feed/"
+    },
+    {
+      "name": "Domadoo",
+      "url": "https://blog.domadoo.fr",
+      "category": "Domotique",
+      "feedType": "RSS2",
+      "feedUrl": "https://rss.domadoo.fr/"
+    },
+    {
+      "name": "La Revue du Digital",
+      "url": "https://www.larevuedudigital.com",
+      "category": "Pro",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.larevuedudigital.com/feed/"
+    },
+    {
+      "name": "Zataz",
+      "url": "https://www.zataz.com",
+      "category": "Cybersécurité",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.zataz.com/rss/zataz-news.rss"
+    },
+    {
+      "name": "IT-Connect",
+      "url": "https://www.it-connect.fr",
+      "category": "Cybersécurité",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.it-connect.fr/actualites/actu-securite/feed/"
+    },
+    {
+      "name": "Undernews",
+      "url": "https://www.undernews.fr",
+      "category": "Cybersécurité",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.undernews.fr/feed"
+    },
+    {
+      "name": "Siècle Digital",
+      "url": "https://www.siecledigital.fr",
+      "category": "Cybersécurité",
+      "feedType": "RSS2",
+      "feedUrl": "https://siecledigital.fr/cybersecurite/feed/"
     }
   ]
 }
