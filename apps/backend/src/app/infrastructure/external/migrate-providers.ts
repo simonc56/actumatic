@@ -20,6 +20,9 @@ function slugify(str: string) {
   str = str.replace(/^\s+|\s+$/g, ''); // trim leading/trailing white space
   str = str.toLowerCase(); // convert string to lowercase
   str = str
+    .replace(/é|è|ê/g, 'e') // replace é, è, ê with e
+    .replace(/à/g, 'a') // replace à with a
+    .replace(/ç/g, 'c') // replace ç with c
     .replace(/[^a-z0-9 -]/g, '') // remove any non-alphanumeric characters
     .replace(/\s+/g, '-') // replace spaces with hyphens
     .replace(/-+/g, '-'); // remove consecutive hyphens
