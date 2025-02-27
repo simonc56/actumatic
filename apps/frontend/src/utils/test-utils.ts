@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { api } from '../app/services/api';
 
 afterEach(() => {
