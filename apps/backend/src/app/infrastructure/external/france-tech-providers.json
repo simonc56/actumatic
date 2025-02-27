@@ -55,6 +55,69 @@
       "category": "Numérique",
       "feedType": "RSS2",
       "feedUrl": "https://www.clubic.com/feed/news.rss"
+    },
+    {
+      "name": "Génération NT",
+      "url": "https://www.generation-nt.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.generation-nt.com/export/rss.xml"
+    },
+    {
+      "name": "Clubic",
+      "url": "https://www.clubic.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.clubic.com/feed/rss"
+    },
+    {
+      "name": "Ginjfo",
+      "url": "https://www.ginjfo.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.ginjfo.com/actualites/rss"
+    },
+    {
+      "name": "Presse-Citron",
+      "url": "https://www.presse-citron.net",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.presse-citron.net/feed/"
+    },
+    {
+      "name": "Journal du geek",
+      "url": "https://www.journaldugeek.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.journaldugeek.com/feed/"
+    },
+    {
+      "name": "Tom's Guide",
+      "url": "https://www.tomsguide.fr",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.tomsguide.fr/feed/"
+    },
+    {
+      "name": "Tom's Hardware",
+      "url": "https://www.tomshardware.fr",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.tomshardware.fr/feed/"
+    },
+    {
+      "name": "01net",
+      "url": "https://www.01net.com",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.01net.com/actualites/feed/"
+    },
+    {
+      "name": "Korben",
+      "url": "https://korben.info",
+      "category": "Numérique",
+      "feedType": "RSS2",
+      "feedUrl": "https://korben.info/feed/"
     }
   ]
 }
