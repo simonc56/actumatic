@@ -5,7 +5,7 @@ import { isoToTimeString } from 'src/utils/datetime';
 
 type Props = { provider: IProviderDto };
 
-function NewsList({ provider }: Props) {
+function NewsListAutonomous({ provider }: Props) {
   const { data: allNews } = useGetAllNewsByProviderQuery({
     providerId: provider.id,
     after: new Date().toISOString().split('T')[0],
@@ -60,4 +60,4 @@ function NewsList({ provider }: Props) {
   );
 }
 
-export default NewsList;
+export default NewsListAutonomous;

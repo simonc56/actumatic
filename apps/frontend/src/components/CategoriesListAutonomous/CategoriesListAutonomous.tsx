@@ -1,5 +1,5 @@
 import { useGetCategoriesQuery } from 'src/features/category';
-import ProvidersList from '../ProvidersList/ProvidersList';
+import ProvidersListAutonomous from '../ProvidersListAutonomous/ProvidersListAutonomous';
 import './CategoriesList.scss';
 
 function CategoriesList() {
@@ -8,7 +8,7 @@ function CategoriesList() {
   return (
     <main className="categories-list">
       {categories?.map((category) => (
-        <ProvidersList key={category.id} category={category} />
+        <ProvidersListAutonomous key={category.id} category={category} />
       ))}
     </main>
   );
