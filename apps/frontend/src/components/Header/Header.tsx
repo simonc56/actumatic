@@ -26,15 +26,6 @@ const links = [
       { link: '/?date=all-time', label: 'Tout' },
     ],
   },
-  {
-    link: '#3',
-    label: 'A Propos',
-    links: [
-      { link: '/faq', label: 'FAQ' },
-      { link: '/support', label: 'Support' },
-      { link: '/blog', label: 'Blog' },
-    ],
-  },
 ];
 
 export default function Header() {
