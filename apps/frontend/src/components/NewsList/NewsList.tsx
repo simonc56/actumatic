@@ -1,7 +1,7 @@
 import { Anchor, Table } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
 import { Link } from 'react-router-dom';
-import { isoToTimeString } from 'src/utils/datetime';
+import { isoToShortDateString, isoToTimeString } from 'src/utils/datetime';
 import classes from './NewsList.module.css';
 
 type Props = {
@@ -15,12 +15,14 @@ function NewsList({ providerId, providerName, news }: Props) {
   const rows =
     news.map((news) => (
       <Table.Tr key={news.url}>
-        <Table.Td w={1} opacity={0.7} fz={12}>
+        <Table.Td w={76} opacity={0.7} fz={12} style={{ paddingInline: 6 }}>
+          {isoToShortDateString(news.createdAt)}{' '}
           {isoToTimeString(news.createdAt)}
         </Table.Td>
         <Table.Td
           maw="md"
           style={{
+            paddingInline: 6,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',

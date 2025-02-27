@@ -21,3 +21,16 @@ export function isoToDateString(isoString: string): string {
   const date = new Date(isoString);
   return date.toLocaleDateString('fr-FR');
 }
+
+/**
+ * Converts an ISO datetime string to a short date string (DD/MM)
+ * @param isoString - ISO datetime string (e.g., "2023-11-15T14:30:00Z")
+ * @returns Short date string in DD/MM format
+ */
+export function isoToShortDateString(isoString: string): string {
+  const date = new Date(isoString);
+  return date.toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: '2-digit', // 'short'
+  });
+}
