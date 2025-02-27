@@ -61,7 +61,7 @@ function ProvidersListDisplay({
         wrap="wrap"
         justify="flex-start"
         style={
-          isNarrowScreen ? { maxHeight: 500 + totalHeightInPixels / 2 } : {}
+          isNarrowScreen ? { maxHeight: 300 + totalHeightInPixels / 2 } : {}
         }
       >
         {newsByProviders.map((provider) => (

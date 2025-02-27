@@ -44,7 +44,7 @@ function NewsListDisplay({ providerId, providerName, news }: Props) {
         borderRadius: '8px',
         border: `1px solid rgba(128, 128, 128, .2)`,
         overflow: 'hidden',
-        maxWidth: '946px',
+        maxWidth: '946px', // half fullHD screen
       }}
     >
       <Table
