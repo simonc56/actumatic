@@ -2,7 +2,7 @@ import { Anchor, Table } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
 import { Link } from 'react-router-dom';
 import { isoToTimeString } from 'src/utils/datetime';
-import classes from './NewsListDisplay.module.css';
+import classes from './NewsList.module.css';
 
 type Props = {
   providerId: string;
@@ -10,7 +10,7 @@ type Props = {
   news: INewsDto[];
 };
 
-function NewsListDisplay({ providerId, providerName, news }: Props) {
+function NewsList({ providerId, providerName, news }: Props) {
   if (!news.length) return null;
   const rows =
     news.map((news) => (
@@ -80,4 +80,4 @@ function NewsListDisplay({ providerId, providerName, news }: Props) {
   );
 }
 
-export default NewsListDisplay;
+export default NewsList;

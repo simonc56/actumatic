@@ -5,7 +5,7 @@ function ActumaticLogo({ greyscale = false }) {
   const style = greyscale ? { filter: 'grayscale(1)' } : {};
   return (
     <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
-      <img src={logo} height={28} style={style} />
+      <img src={logo} height={28} style={style} alt="website logo" />
     </Link>
   );
 }

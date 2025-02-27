@@ -1,8 +1,8 @@
 import { Flex, Title } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
 import { useEffect, useState } from 'react';
-import NewsListDisplay from '../NewsListDisplay/NewsListDisplay';
-import classes from './ProvidersListDisplay.module.css';
+import NewsList from '../NewsList/NewsList';
+import classes from './ProvidersList.module.css';
 
 type ProvidersListProps = {
   categoryName: string;
@@ -25,10 +25,7 @@ function countProvidersAndNews(
   return [nbOfProviders, nbOfNews];
 }
 
-function ProvidersListDisplay({
-  categoryName,
-  newsByProviders,
-}: ProvidersListProps) {
+function ProvidersList({ categoryName, newsByProviders }: ProvidersListProps) {
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const [nbOfProviders, nbOfNews] = countProvidersAndNews(newsByProviders);
   const totalHeightInPixels = nbOfProviders * 62 + nbOfNews * 28;
@@ -47,7 +44,7 @@ function ProvidersListDisplay({
     return function cleanup() {
       mediaWatcher.removeEventListener('change', updateIsNarrowScreen);
     };
-  });
+  }, []);
 
   if (!newsByProviders?.length) return null;
   return (
@@ -65,7 +62,7 @@ function ProvidersListDisplay({
         }
       >
         {newsByProviders.map((provider) => (
-          <NewsListDisplay
+          <NewsList
             providerId={provider.id}
             providerName={provider.name}
             key={provider.id}
@@ -77,4 +74,4 @@ function ProvidersListDisplay({
   );
 }
 
-export default ProvidersListDisplay;
+export default ProvidersList;

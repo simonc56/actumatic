@@ -1,6 +1,6 @@
 import useFetchSortedNews from 'src/hooks/useFetchSortedNews';
 import useGetDate from 'src/hooks/useGetDate';
-import ProvidersListDisplay from '../ProvidersListDisplay/ProvidersListDisplay';
+import ProvidersList from '../ProvidersList/ProvidersList';
 
 function SortedNewsList() {
   const sortedNews = useFetchSortedNews();
@@ -11,7 +11,7 @@ function SortedNewsList() {
     <>
       <p>{date}</p>
       {sortedNews.map((category) => (
-        <ProvidersListDisplay
+        <ProvidersList
           key={category.id}
           categoryName={category.name}
           newsByProviders={category.providers}

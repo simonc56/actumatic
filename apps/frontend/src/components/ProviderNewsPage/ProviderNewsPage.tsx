@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import useFetchSortedNews from 'src/hooks/useFetchSortedNews';
-import NewsListDisplay from '../NewsListDisplay/NewsListDisplay';
+import NewsList from '../NewsList/NewsList';
 
 function ProviderNewsPage() {
   const sortedNews = useFetchSortedNews();
@@ -16,7 +16,7 @@ function ProviderNewsPage() {
   if (!news?.length) return null;
   return (
     <div>
-      <NewsListDisplay
+      <NewsList
         providerId={providerId}
         providerName={providerName}
         news={news}

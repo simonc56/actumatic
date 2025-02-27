@@ -1,8 +1,7 @@
 import { useGetCategoriesQuery } from 'src/features/category';
 import ProvidersListAutonomous from '../ProvidersListAutonomous/ProvidersListAutonomous';
-import './CategoriesList.scss';
 
-function CategoriesList() {
+function CategoriesListAutonomous() {
   const { data: categories } = useGetCategoriesQuery();
 
   return (
@@ -14,4 +13,4 @@ function CategoriesList() {
   );
 }
 
-export default CategoriesList;
+export default CategoriesListAutonomous;
