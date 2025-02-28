@@ -24,6 +24,7 @@ model Provider {
   url        String   @unique
   feedUrl    String   @unique
   name       String
+  slug       String   @unique
   feedType   String
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String   @db.Uuid
