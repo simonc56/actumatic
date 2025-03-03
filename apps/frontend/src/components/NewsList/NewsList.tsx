@@ -1,18 +1,21 @@
 import { Anchor, Table } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from 'src/app/hooks';
+import { selectProviderByIdOrSlug } from 'src/app/store';
 import { isoToShortDateString, isoToTimeString } from 'src/utils/datetime';
 import classes from './NewsList.module.css';
 
 type Props = {
   providerId: string;
-  providerName: string;
-  news: INewsDto[];
+  news: Omit<INewsDto, 'providerId'>[];
   color: string;
+  isHeaderWithLink?: boolean;
 };
 
-function NewsList({ providerId, providerName, news, color }: Props) {
-  if (!news.length) return null;
+function NewsList({ providerId, news, color, isHeaderWithLink = true }: Props) {
+  const provider = useAppSelector(selectProviderByIdOrSlug(providerId));
+  if (!news.length || !provider) return null;
   const rows =
     news.map((news) => (
       <Table.Tr key={news.url}>
@@ -65,15 +68,19 @@ function NewsList({ providerId, providerName, news, color }: Props) {
               bg={color}
               className={classes.tableHeader}
             >
-              <Link
-                to={`provider/${providerId}?date=all`}
-                style={{
-                  color: 'inherit',
-                  textDecoration: 'none',
-                }}
-              >
-                {providerName}
-              </Link>
+              {isHeaderWithLink ? (
+                <Link
+                  to={`/provider/${provider.slug}`}
+                  style={{
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {provider.name}
+                </Link>
+              ) : (
+                provider.name
+              )}
             </Table.Th>
           </Table.Tr>
         </Table.Thead>

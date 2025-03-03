@@ -1,16 +1,17 @@
 import { Flex, Title } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
 import { useEffect, useState } from 'react';
+import { useAppSelector } from 'src/app/hooks';
+import { selectCategoryByIdOrSlug } from 'src/app/store';
 import { getCategoryColor } from 'src/utils/style';
 import NewsList from '../NewsList/NewsList';
 import classes from './ProvidersList.module.css';
 
 type ProvidersListProps = {
-  categoryName: string;
+  categoryId: string;
   newsByProviders: {
-    id: string;
-    name: string;
-    news: INewsDto[];
+    providerId: string;
+    news: Omit<INewsDto, 'providerId'>[];
   }[];
 };
 
@@ -26,7 +27,8 @@ function countProvidersAndNews(
   return [nbOfProviders, nbOfNews];
 }
 
-function ProvidersList({ categoryName, newsByProviders }: ProvidersListProps) {
+function ProvidersList({ categoryId, newsByProviders }: ProvidersListProps) {
+  const category = useAppSelector(selectCategoryByIdOrSlug(categoryId));
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const [nbOfProviders, nbOfNews] = countProvidersAndNews(newsByProviders);
   const totalHeightInPixels = nbOfProviders * 62 + nbOfNews * 28;
@@ -47,15 +49,15 @@ function ProvidersList({ categoryName, newsByProviders }: ProvidersListProps) {
     };
   }, []);
 
-  if (!newsByProviders?.length) return null;
+  if (!newsByProviders.length || !category) return null;
   return (
     <>
       <Title
         order={2}
         className={classes.categoryTitle}
-        style={{ color: getCategoryColor(categoryName) }}
+        style={{ color: getCategoryColor(category.name) }}
       >
-        {categoryName}
+        {category.name}
       </Title>
       <Flex
         direction="column"
@@ -63,16 +65,15 @@ function ProvidersList({ categoryName, newsByProviders }: ProvidersListProps) {
         wrap="wrap"
         justify="flex-start"
         style={
-          isNarrowScreen ? { maxHeight: 300 + totalHeightInPixels / 2 } : {}
+          isNarrowScreen ? { maxHeight: 100 + totalHeightInPixels / 2 } : {}
         }
       >
         {newsByProviders.map((provider) => (
           <NewsList
-            providerId={provider.id}
-            providerName={provider.name}
-            key={provider.id}
+            providerId={provider.providerId}
+            key={provider.providerId}
             news={provider.news}
-            color={getCategoryColor(categoryName)}
+            color={getCategoryColor(category.name)}
           />
         ))}
       </Flex>
