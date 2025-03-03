@@ -1,14 +1,23 @@
-import { ICategoryDto } from '@shared-libs';
+import { ICategoriesAndProvidersDto, ICategoryDto } from '@shared-libs';
 import { ICategory } from 'src/@types/category';
 import { enhancedApi } from '../app/services/api';
 
-const providerApi = enhancedApi
-  .enhanceEndpoints({ addTagTypes: ['Category', 'Categories'] })
+const categoryApi = enhancedApi
+  .enhanceEndpoints({
+    addTagTypes: ['Category', 'Categories', 'CategoriesAndProviders'],
+  })
   .injectEndpoints({
     endpoints: (builder) => ({
       getCategories: builder.query<ICategory[], void>({
         query: () => 'category',
         providesTags: ['Categories'],
+      }),
+      getCategoriesAndProviders: builder.query<
+        ICategoriesAndProvidersDto,
+        void
+      >({
+        query: () => 'category/provider',
+        providesTags: ['CategoriesAndProviders'],
       }),
       getCategory: builder.query<ICategory, string>({
         query: (id: string) => `category/${id}`,
@@ -27,6 +36,9 @@ const providerApi = enhancedApi
 
 export const {
   useGetCategoriesQuery,
+  useGetCategoriesAndProvidersQuery,
   useGetCategoryQuery,
   useCreateCategoryMutation,
-} = providerApi;
+} = categoryApi;
+
+export default categoryApi;
