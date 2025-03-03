@@ -1,11 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ICategoryDto, IProviderDto } from '@shared-libs';
-import { Category } from '../../core/entities/category.entity';
+import {
+  CategoriesAndProviders,
+  Category,
+} from '../../core/entities/category.entity';
 import { CreateCategoryDto } from '../dtos/create-category.dto';
 import {
   CATEGORY_REPOSITORY,
   type ICategoryRepository,
 } from '../ports/category-repository.port';
+import {
+  IProviderRepository,
+  PROVIDER_REPOSITORY,
+} from '../ports/provider-repository.port';
 
 @Injectable()
 export class CreateCategoryUseCase {
@@ -55,6 +62,7 @@ export class GetProvidersByCategoryUseCase {
     return providers.map((provider) => ({
       id: provider.id!,
       name: provider.name,
+      slug: provider.slug,
       url: provider.url,
       categoryId: provider.categoryId,
     }));
@@ -62,18 +70,34 @@ export class GetProvidersByCategoryUseCase {
 }
 
 @Injectable()
-export class GetCategoriesUseCase {
+export class GetCategoriesAndProvidersUseCase {
   constructor(
     @Inject(CATEGORY_REPOSITORY)
-    private readonly userRepository: ICategoryRepository,
+    private readonly categoryRepository: ICategoryRepository,
+    @Inject(PROVIDER_REPOSITORY)
+    private readonly providerRepository: IProviderRepository,
   ) {}
 
-  async execute(): Promise<ICategoryDto[]> {
-    const categories = await this.userRepository.findAll();
-    return categories.map((category) => ({
-      id: category.id!,
-      name: category.name,
-      slug: category.slug,
-    }));
+  async execute(): Promise<CategoriesAndProviders> {
+    const categories = await this.categoryRepository.findAll();
+    const providers = await this.providerRepository.findAll();
+    const detailedCategories = categories.map((category) => {
+      const providersByCategory = providers.filter(
+        (provider) => provider.categoryId === category.id,
+      );
+      return {
+        id: category.id!,
+        name: category.name,
+        slug: category.slug,
+        providers: providersByCategory.map((provider) => ({
+          id: provider.id!,
+          name: provider.name,
+          slug: provider.slug,
+          url: provider.url,
+          categoryId: provider.categoryId,
+        })),
+      };
+    });
+    return { categories: detailedCategories };
   }
 }

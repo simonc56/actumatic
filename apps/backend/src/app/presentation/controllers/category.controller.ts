@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateCategoryDto } from '../../application/dtos/create-category.dto';
 import {
   CreateCategoryUseCase,
-  GetCategoriesUseCase,
+  GetCategoriesAndProvidersUseCase,
   GetCategoryUseCase,
   GetProvidersByCategoryUseCase,
 } from '../../application/use-cases/category.use-case';
@@ -11,7 +11,7 @@ import {
 export class CategoryController {
   constructor(
     private readonly createCategoryUseCase: CreateCategoryUseCase,
-    private readonly getCategoriesUseCase: GetCategoriesUseCase,
+    private readonly getCategoriesAndProvidersUseCase: GetCategoriesAndProvidersUseCase,
     private readonly getProvidersByCategoryUseCase: GetProvidersByCategoryUseCase,
     private readonly getCategoryUseCase: GetCategoryUseCase,
   ) {}
@@ -21,9 +21,9 @@ export class CategoryController {
     return this.createCategoryUseCase.execute(userData);
   }
 
-  @Get()
+  @Get('provider')
   async getCategories() {
-    return this.getCategoriesUseCase.execute();
+    return this.getCategoriesAndProvidersUseCase.execute();
   }
 
   @Get(':id')
