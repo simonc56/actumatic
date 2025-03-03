@@ -60,19 +60,19 @@ export function parseFrenchDate(dateStr: string): Date {
   // Conversion de la date française en format anglais
   let englishDate = dateStr.toLowerCase();
 
+  // Conversion des mois (avant les jours pour éviter collision 'mars' et 'mardi')
+  Object.entries(frenchMonthsMap).forEach(([fr, en]) => {
+    englishDate = englishDate.replace(fr, en);
+  });
+  Object.entries(frenchShortMonthsMap).forEach(([fr, en]) => {
+    englishDate = englishDate.replace(fr, en);
+  });
+
   // Conversion des jours
   Object.entries(frenchDaysMap).forEach(([fr, en]) => {
     englishDate = englishDate.replace(fr, en);
   });
   Object.entries(frenchShortDaysMap).forEach(([fr, en]) => {
-    englishDate = englishDate.replace(fr, en);
-  });
-
-  // Conversion des mois
-  Object.entries(frenchMonthsMap).forEach(([fr, en]) => {
-    englishDate = englishDate.replace(fr, en);
-  });
-  Object.entries(frenchShortMonthsMap).forEach(([fr, en]) => {
     englishDate = englishDate.replace(fr, en);
   });
 
