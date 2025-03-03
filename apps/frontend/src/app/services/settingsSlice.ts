@@ -22,9 +22,15 @@ const settingsSlice = createSlice({
       .addCase(fetchCategoriesAndProviders.fulfilled, (state, action) => {
         state.categories = action.payload?.categories || [];
         if (!state.categories.length) return;
-        const providers = state.categories.reduce((acc, category: ICategoryDetailedDto) => {
-          return [...acc, ...(category.providers || [])];
-        }, [] as Omit<IProviderDto, 'categoryId'>[]);
+        const providers = state.categories.reduce(
+          (
+            acc: Omit<IProviderDto, 'categoryId'>[],
+            category: ICategoryDetailedDto,
+          ) => {
+            return [...acc, ...(category.providers || [])];
+          },
+          [],
+        );
         state.providers = providers;
       })
       .addCase(fetchCategoriesAndProviders.rejected, (state) => {
