@@ -7,6 +7,7 @@ export type ICreateProviderDto = {
 export type IProviderDto = {
   id: string;
   name: string;
+  slug: string;
   url: string;
   categoryId: string;
 };
