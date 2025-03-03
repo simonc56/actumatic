@@ -1,3 +1,6 @@
+import { ICategoryDto } from './category.dto';
+import { IProviderDto } from './provider.dto';
+
 export type ICreateNewsDto = {
   title: string;
   url: string;
@@ -13,12 +16,21 @@ export type INewsDto = {
   createdAt: string;
 };
 
+export type IProviderNewsDto = {
+  providerId: string;
+  news: Omit<INewsDto, 'providerId'>[];
+};
+
 export type ISortedNewsDto = {
-  id: string;
-  name: string;
+  categoryId: string;
   providers: {
-    id: string;
-    name: string;
-    news: INewsDto[];
+    providerId: string;
+    news: Omit<INewsDto, 'providerId'>[];
   }[];
 }[];
+
+export type ICategoriesAndProvidersDto = { categories: ICategoryDetailedDto[] };
+
+export type ICategoryDetailedDto = ICategoryDto & {
+  providers: Omit<IProviderDto, 'categoryId'>[];
+};
