@@ -2,29 +2,29 @@ import { useSearchParams } from 'react-router-dom';
 import { useGetSortedNewsQuery } from 'src/features/news';
 
 type NewsQueryOptions = {
-  after?: string;
-  before?: string;
+  begin?: string;
+  end?: string;
   filter?: string;
   limit?: number;
 };
 
 const setQueryOptions = (date: string): NewsQueryOptions => {
   const options: NewsQueryOptions = {
-    after: new Date().toISOString().split('T')[0],
+    begin: new Date().toISOString().split('T')[0],
   };
   if (date === 'yesterday') {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
-    options.after = yesterday.toISOString().split('T')[0];
-    options.before = new Date().toISOString().split('T')[0];
+    options.begin = yesterday.toISOString().split('T')[0];
+    options.end = new Date().toISOString().split('T')[0];
   }
   if (date === 'last-week') {
     const lastWeek = new Date();
     lastWeek.setDate(lastWeek.getDate() - 7);
-    options.after = lastWeek.toISOString().split('T')[0];
+    options.begin = lastWeek.toISOString().split('T')[0];
   }
   if (date === 'all-time') {
-    options.after = undefined;
+    options.begin = undefined;
   }
   return options;
 };

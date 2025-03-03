@@ -1,31 +1,33 @@
-import { INewsDto } from '@shared-libs';
+import { INewsDto, IProviderNewsDto } from '@shared-libs';
 import { INews, ISortedNews, NewsParamsType } from 'src/@types/news';
 import { enhancedApi } from '../app/services/api';
 
 const newsApi = enhancedApi
-  .enhanceEndpoints({ addTagTypes: ['News', 'AllNews', 'SortedNews'] })
+  .enhanceEndpoints({
+    addTagTypes: ['News', 'AllNews', 'ProviderNews', 'SortedNews'],
+  })
   .injectEndpoints({
     endpoints: (builder) => ({
       getAllNews: builder.query<INews[], NewsParamsType>({
-        query: ({ after, before }) => {
-          return { url: `news/all`, params: { after, before } };
+        query: ({ begin, end }) => {
+          return { url: `news/all`, params: { begin, end } };
         },
         providesTags: ['AllNews'],
       }),
       getSortedNews: builder.query<ISortedNews, NewsParamsType>({
-        query: ({ after, before }) => {
-          return { url: `news/sorted`, params: { after, before } };
+        query: ({ begin, end }) => {
+          return { url: `news/sorted`, params: { begin, end } };
         },
         providesTags: ['SortedNews'],
       }),
-      getAllNewsByProvider: builder.query<INews[], NewsParamsType>({
-        query: ({ providerId, after, before }) => {
+      getAllNewsByProvider: builder.query<IProviderNewsDto, NewsParamsType>({
+        query: ({ providerId, begin, end }) => {
           return {
             url: `provider/${providerId}/news`,
-            params: { after, before },
+            params: { begin, end },
           };
         },
-        providesTags: ['AllNews'],
+        providesTags: ['ProviderNews'],
       }),
       getNews: builder.query<INews, string>({
         query: (id: string) => `news/${id}`,

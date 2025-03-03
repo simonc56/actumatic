@@ -6,12 +6,12 @@ import { isoToTimeString } from 'src/utils/datetime';
 type Props = { provider: IProviderDto };
 
 function NewsListAutonomous({ provider }: Props) {
-  const { data: allNews } = useGetAllNewsByProviderQuery({
+  const { data: providerNews } = useGetAllNewsByProviderQuery({
     providerId: provider.id,
-    after: new Date().toISOString().split('T')[0],
+    begin: new Date().toISOString().split('T')[0],
   });
   const rows =
-    allNews?.map((news) => (
+    providerNews?.news?.map((news) => (
       <Table.Tr key={news.url}>
         <Table.Td w={1} opacity={0.7} fz={12}>
           {isoToTimeString(news.createdAt)}
