@@ -15,3 +15,17 @@ export class Category {
     return new Category(category);
   }
 }
+
+export type CategoriesAndProviders = {
+  categories: {
+    id: string;
+    name: string;
+    slug: string;
+    providers: {
+      id: string;
+      name: string;
+      slug: string;
+      url: string;
+    }[];
+  }[];
+};
