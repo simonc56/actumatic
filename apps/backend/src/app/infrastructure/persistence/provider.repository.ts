@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { IProviderRepository } from '../../application/ports/provider-repository.port';
-import { News } from '../../core/entities/news.entity';
+import {
+  FindNewsByProviderIdArgs,
+  FindNewsByProviderSlugArgs,
+  IProviderRepository,
+} from '../../application/ports/provider-repository.port';
+import { News, ProviderNews } from '../../core/entities/news.entity';
 import { Provider } from '../../core/entities/provider.entity';
 import { PrismaService } from './prisma.service';
 
@@ -17,6 +21,13 @@ export class ProviderRepository implements IProviderRepository {
     return provider ? new Provider(provider) : null;
   }
 
+  async findBySlug(slug: string): Promise<Provider | null> {
+    const provider = await this.prisma.provider.findUnique({
+      where: { slug },
+    });
+    return provider ? new Provider(provider) : null;
+  }
+
   async save(provider: Provider): Promise<Provider> {
     const saved = await this.prisma.provider.create({
       data: {
@@ -24,6 +35,7 @@ export class ProviderRepository implements IProviderRepository {
         feedUrl: provider.feedUrl,
         feedType: provider.feedType,
         name: provider.name,
+        slug: provider.slug,
         categoryId: provider.categoryId,
       },
     });
@@ -42,26 +54,68 @@ export class ProviderRepository implements IProviderRepository {
     return providers.map((provider: Provider) => new Provider(provider));
   }
 
-  async findNewsByProvider(
-    providerId: string,
-    after: string,
-    before: string,
-  ): Promise<News[]> {
+  async findNewsByProviderId({
+    providerId,
+    begin,
+    end,
+  }: FindNewsByProviderIdArgs): Promise<ProviderNews | null> {
+    const provider = await this.prisma.provider.findUnique({
+      where: { id: providerId },
+    });
+    if (!provider) {
+      return null;
+    }
     const where: any = { providerId };
-    if (before || after) {
+    if (begin || end) {
       where.createdAt = {};
-      if (before) {
-        where.createdAt.lte = new Date(before).toISOString();
+      if (end) {
+        where.createdAt.lte = new Date(end).toISOString();
       }
-      if (after) {
-        where.createdAt.gte = new Date(after).toISOString();
+      if (begin) {
+        where.createdAt.gte = new Date(begin).toISOString();
       }
     }
     const news = await this.prisma.news.findMany({
       where,
       orderBy: [{ createdAt: 'desc' }],
     });
-    return news.map((news) => new News(news));
+    const response: ProviderNews = {
+      providerId: provider.id,
+      news: news.map((news) => new News(news)),
+    };
+    return response;
+  }
+
+  async findNewsByProviderSlug({
+    providerSlug,
+    begin,
+    end,
+  }: FindNewsByProviderSlugArgs): Promise<ProviderNews | null> {
+    const provider = await this.prisma.provider.findUnique({
+      where: { slug: providerSlug },
+    });
+    if (!provider) {
+      return null;
+    }
+    const where: any = { providerId: provider.id };
+    if (begin || end) {
+      where.createdAt = {};
+      if (end) {
+        where.createdAt.lte = new Date(end).toISOString();
+      }
+      if (begin) {
+        where.createdAt.gte = new Date(begin).toISOString();
+      }
+    }
+    const news = await this.prisma.news.findMany({
+      where,
+      orderBy: [{ createdAt: 'desc' }],
+    });
+    const response: ProviderNews = {
+      providerId: provider.id,
+      news: news.map((news) => new News(news)),
+    };
+    return response;
   }
 
   async delete(id: string): Promise<Provider> {

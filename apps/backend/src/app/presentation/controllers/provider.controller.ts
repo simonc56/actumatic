@@ -26,17 +26,21 @@ export class ProviderController {
     return this.getProvidersUseCase.execute();
   }
 
-  @Get(':providerId/news')
+  @Get(':provider/news')
   async getNewsByProvider(
-    @Param('providerId') providerId: string,
-    @Query('after') after: string,
-    @Query('before') before: string,
+    @Param('provider') provider: string,
+    @Query('begin') begin: string,
+    @Query('end') end: string,
   ) {
-    return this.getNewsByProviderUseCase.execute(providerId, after, before);
+    return this.getNewsByProviderUseCase.execute({
+      provider,
+      begin,
+      end,
+    });
   }
 
-  @Get(':id')
-  async getProvider(@Param('id') id: string) {
-    return this.getProviderUseCase.execute(id);
+  @Get(':provider')
+  async getProvider(@Param('provider') provider: string) {
+    return this.getProviderUseCase.execute(provider);
   }
 }

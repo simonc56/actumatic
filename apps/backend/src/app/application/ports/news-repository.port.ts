@@ -4,13 +4,7 @@ export const NEWS_REPOSITORY = Symbol('INewsRepository');
 
 export interface INewsRepository {
   findById(id: string): Promise<News | null>;
-  findAll({
-    before,
-    after,
-  }: {
-    before: string;
-    after: string;
-  }): Promise<News[]>;
+  findAll({ begin, end }: { begin: string; end: string }): Promise<News[]>;
   findByTitle(title: string): Promise<News[]>;
   save(news: News): Promise<News>;
   upsert(news: News): Promise<News>;

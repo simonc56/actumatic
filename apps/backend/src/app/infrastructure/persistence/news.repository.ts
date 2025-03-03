@@ -49,20 +49,20 @@ export class NewsRepository implements INewsRepository {
   }
 
   async findAll({
-    after,
-    before,
+    begin,
+    end,
   }: {
-    after: string;
-    before: string;
+    begin: string;
+    end: string;
   }): Promise<News[]> {
     const where: any = {};
-    if (before || after) {
+    if (begin || end) {
       where.createdAt = {};
-      if (before) {
-        where.createdAt.lte = new Date(before).toISOString();
+      if (end) {
+        where.createdAt.lte = new Date(end).toISOString();
       }
-      if (after) {
-        where.createdAt.gte = new Date(after).toISOString();
+      if (begin) {
+        where.createdAt.gte = new Date(begin).toISOString();
       }
     }
     const news: News[] = await this.prisma.news.findMany({

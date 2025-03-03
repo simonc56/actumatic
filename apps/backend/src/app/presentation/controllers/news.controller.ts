@@ -21,18 +21,18 @@ export class NewsController {
 
   @Get('all')
   async getAllNews(
-    @Query('after') after: string, // ISO formated date string, ex. 2021-12-31
-    @Query('before') before: string,
+    @Query('begin') begin: string, // ISO formated date string, ex. 2021-12-31
+    @Query('end') end: string,
   ) {
-    return this.getAllNewsUseCase.execute({ after, before });
+    return this.getAllNewsUseCase.execute({ begin, end });
   }
 
   @Get('sorted')
   async getSortedNews(
-    @Query('after') after: string,
-    @Query('before') before: string,
+    @Query('begin') begin: string,
+    @Query('end') end: string,
   ) {
-    return this.getSortedNewsUseCase.execute({ after, before });
+    return this.getSortedNewsUseCase.execute({ begin, end });
   }
 
   @Get(':id')

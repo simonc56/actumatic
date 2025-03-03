@@ -12,12 +12,12 @@ export class GetAllNewsUseCase {
   ) {}
 
   async execute({
-    after,
-    before,
+    begin,
+    end,
   }: {
-    after: string;
-    before: string;
+    begin: string;
+    end: string;
   }): Promise<News[]> {
-    return this.newsRepository.findAll({ after, before });
+    return this.newsRepository.findAll({ begin, end });
   }
 }

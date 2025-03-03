@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { News } from '../../core/entities/news.entity';
 import { Provider } from '../../core/entities/provider.entity';
 import { CreateProviderDto } from '../dtos/create-provider.dto';
 import {
@@ -11,7 +10,7 @@ import {
 export class CreateProviderUseCase {
   constructor(
     @Inject(PROVIDER_REPOSITORY)
-    private readonly providerRepository: IProviderRepository
+    private readonly providerRepository: IProviderRepository,
   ) {}
 
   async execute(userData: CreateProviderDto): Promise<Provider> {
@@ -24,11 +23,14 @@ export class CreateProviderUseCase {
 export class GetProviderUseCase {
   constructor(
     @Inject(PROVIDER_REPOSITORY)
-    private readonly providerRepository: IProviderRepository
+    private readonly providerRepository: IProviderRepository,
   ) {}
 
-  async execute(id: string): Promise<Provider | null> {
-    return this.providerRepository.findById(id);
+  async execute(provider: string): Promise<Provider | null> {
+    if (provider.length === 36) {
+      return this.providerRepository.findById(provider);
+    }
+    return this.providerRepository.findBySlug(provider);
   }
 }
 
@@ -36,11 +38,30 @@ export class GetProviderUseCase {
 export class GetNewsByProviderUseCase {
   constructor(
     @Inject(PROVIDER_REPOSITORY)
-    private readonly providerRepository: IProviderRepository
+    private readonly providerRepository: IProviderRepository,
   ) {}
 
-  async execute(providerId: string, after: string, before: string): Promise<News[]> {
-    return this.providerRepository.findNewsByProvider(providerId, after, before);
+  async execute({
+    provider,
+    begin,
+    end,
+  }: {
+    provider: string;
+    begin: string;
+    end: string;
+  }) {
+    if (provider.length === 36) {
+      return this.providerRepository.findNewsByProviderId({
+        providerId: provider,
+        begin,
+        end,
+      });
+    }
+    return this.providerRepository.findNewsByProviderSlug({
+      providerSlug: provider,
+      begin,
+      end,
+    });
   }
 }
 
@@ -48,7 +69,7 @@ export class GetNewsByProviderUseCase {
 export class GetProvidersUseCase {
   constructor(
     @Inject(PROVIDER_REPOSITORY)
-    private readonly providerRepository: IProviderRepository
+    private readonly providerRepository: IProviderRepository,
   ) {}
 
   async execute(): Promise<Provider[]> {

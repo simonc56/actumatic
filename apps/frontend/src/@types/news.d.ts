@@ -6,6 +6,6 @@ export type ISortedNews = ISortedNewsDto & {};
 
 export type NewsParamsType = {
   providerId?: string;
-  after?: string;
-  before?: string;
+  begin?: string;
+  end?: string;
 };

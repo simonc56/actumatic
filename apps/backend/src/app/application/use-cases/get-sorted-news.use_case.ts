@@ -24,13 +24,13 @@ export class GetSortedNewsUseCase {
   ) {}
 
   async execute({
-    after,
-    before,
+    begin,
+    end,
   }: {
-    after: string;
-    before: string;
+    begin: string;
+    end: string;
   }): Promise<SortedNews> {
-    const allNewsPromise = this.newsRepository.findAll({ after, before });
+    const allNewsPromise = this.newsRepository.findAll({ begin, end });
     const allCategoriesPromise = this.categoryRepository.findAll();
     const allProvidersPromise = this.providerRepository.findAll();
     const [allNews, allCategories, allProviders] = await Promise.all([
@@ -46,7 +46,6 @@ export class GetSortedNewsUseCase {
           const provider = allProviders.find((p) => p.id === news.providerId);
           acc[news.providerId] = {
             providerId: news.providerId,
-            providerName: provider?.name || '',
             categoryId: provider?.categoryId || '',
             news: [],
           };
@@ -63,7 +62,6 @@ export class GetSortedNewsUseCase {
         string,
         {
           providerId: string;
-          providerName: string;
           categoryId: string;
           news: Omit<News, 'providerId'>[];
         }
@@ -75,15 +73,13 @@ export class GetSortedNewsUseCase {
       .map((category) => {
         const providersInCategory = Object.values(newsByProvider)
           .filter((provider) => provider.categoryId === category.id)
-          .map(({ providerId, providerName, news }) => ({
-            id: providerId,
-            name: providerName,
+          .map(({ providerId, news }) => ({
+            providerId,
             news,
           }));
 
         return {
-          id: category.id!,
-          name: category.name,
+          categoryId: category.id!,
           providers: providersInCategory,
         };
       })
