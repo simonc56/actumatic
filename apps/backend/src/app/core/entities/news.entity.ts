@@ -19,12 +19,20 @@ export class News {
   }
 }
 
+export type ProviderNews = {
+  providerId: string;
+  news: Omit<News, 'providerId'>[];
+};
+
+export type CategoryNews = {
+  providerId: string;
+  news: News[];
+};
+
 export type SortedNews = {
-  id: string;
-  name: string;
+  categoryId: string;
   providers: {
-    id: string;
-    name: string;
+    providerId: string;
     news: Omit<News, 'providerId'>[];
   }[];
 }[];
