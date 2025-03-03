@@ -117,6 +117,7 @@ describe('API Tests', () => {
         name: 'New Provider',
         id: '3',
         url: 'http://new.provider.com',
+        slug: 'new-provider',
         categoryId: '1',
       };
       const { result } = renderHook(() => useCreateProviderMutation(), {
@@ -154,7 +155,7 @@ describe('API Tests', () => {
   describe('News API', () => {
     it('fetches all news successfully', async () => {
       const { result } = renderHook(
-        () => useGetAllNewsQuery({ after: '2024-01-01', before: '2024-12-31' }),
+        () => useGetAllNewsQuery({ begin: '2024-01-01', end: '2024-12-31' }),
         { wrapper },
       );
 
