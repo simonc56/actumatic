@@ -7,6 +7,10 @@ export class CreateProviderDto implements ICreateProviderDto {
   name!: string;
 
   @IsString()
+  @IsNotEmpty()
+  slug!: string;
+
+  @IsString()
   @IsUrl()
   @IsNotEmpty()
   url!: string;

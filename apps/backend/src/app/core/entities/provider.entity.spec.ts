@@ -5,6 +5,7 @@ describe('Provider Entity', () => {
     const providerData = {
       id: '123',
       name: 'Econews',
+      slug: 'econews',
       url: 'http://econews.com',
       feedUrl: 'http://econews.com/feed',
       feedType: 'RSS2',
@@ -23,6 +24,7 @@ describe('Provider Entity', () => {
   it('should allow creating an instance without id', () => {
     const providerData = {
       name: 'Econews',
+      slug: 'econews',
       url: 'http://econews.com',
       feedUrl: 'http://econews.com/feed',
       feedType: 'RSS2',

@@ -89,6 +89,7 @@ async function populateDB() {
         return prisma.provider.create({
           data: {
             name: feed.name,
+            slug: slugify(feed.name),
             url: feed.url,
             feedUrl: feed.feedUrl,
             feedType: feed.feedType,
