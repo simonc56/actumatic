@@ -1,4 +1,4 @@
-const frenchMonthsMap: { [key: string]: string } = {
+const frenchShortMonthsMap: { [key: string]: string } = {
   jan: 'Jan',
   fév: 'Feb',
   mar: 'Mar',
@@ -16,8 +16,22 @@ const frenchMonthsMap: { [key: string]: string } = {
   aou: 'Aug',
   juil: 'Jul',
 };
+const frenchMonthsMap: { [key: string]: string } = {
+  janvier: 'January',
+  février: 'February',
+  mars: 'March',
+  avril: 'April',
+  mai: 'May',
+  juin: 'June',
+  juillet: 'July',
+  août: 'August',
+  septembre: 'September',
+  octobre: 'October',
+  novembre: 'November',
+  décembre: 'December',
+};
 
-const frenchDaysMap: { [key: string]: string } = {
+const frenchShortDaysMap: { [key: string]: string } = {
   lun: 'Mon',
   mar: 'Tue',
   mer: 'Wed',
@@ -25,6 +39,16 @@ const frenchDaysMap: { [key: string]: string } = {
   ven: 'Fri',
   sam: 'Sat',
   dim: 'Sun',
+};
+
+const frenchDaysMap: { [key: string]: string } = {
+  lundi: 'Monday',
+  mardi: 'Tuesday',
+  mercredi: 'Wednesday',
+  jeudi: 'Thursday',
+  vendredi: 'Friday',
+  samedi: 'Saturday',
+  dimanche: 'Sunday',
 };
 
 export function parseFrenchDate(dateStr: string): Date {
@@ -40,9 +64,15 @@ export function parseFrenchDate(dateStr: string): Date {
   Object.entries(frenchDaysMap).forEach(([fr, en]) => {
     englishDate = englishDate.replace(fr, en);
   });
+  Object.entries(frenchShortDaysMap).forEach(([fr, en]) => {
+    englishDate = englishDate.replace(fr, en);
+  });
 
   // Conversion des mois
   Object.entries(frenchMonthsMap).forEach(([fr, en]) => {
+    englishDate = englishDate.replace(fr, en);
+  });
+  Object.entries(frenchShortMonthsMap).forEach(([fr, en]) => {
     englishDate = englishDate.replace(fr, en);
   });
 
