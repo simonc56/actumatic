@@ -2,7 +2,7 @@ import { Burger, Center, Container, Group, Menu } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
-import useFetchSortedNews from 'src/hooks/useFetchSortedNews';
+import { useAppSelector } from 'src/app/hooks';
 import ActumaticLogo from '../Logo/ActumaticLogo';
 import classes from './Header.module.css';
 
@@ -16,25 +16,15 @@ const links = [
       { link: '/category/pro', label: 'Pro' },
     ],
   },
-  { link: '/filters', label: 'Filtres' },
-  {
-    link: '#2',
-    label: 'Dates',
-    links: [
-      { link: '/', label: "Aujourd'hui" },
-      { link: '/?date=yesterday', label: 'Hier' },
-      { link: '/?date=all-time', label: 'Tout' },
-    ],
-  },
 ];
 
 export default function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const sortedNews = useFetchSortedNews();
+  const categories = useAppSelector((store) => store.settings.categories);
   const categoryLinks =
-    sortedNews?.map((category) => ({
+    categories?.map((category) => ({
       label: category.name,
-      link: `/category/${category.id}`,
+      link: `/category/${category.slug}`,
     })) ?? [];
   categoryLinks.push({ label: 'Toutes', link: '/' });
   if (categoryLinks.length) links[0].links = categoryLinks;
