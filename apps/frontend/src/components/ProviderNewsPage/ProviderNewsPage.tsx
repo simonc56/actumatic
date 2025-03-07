@@ -11,24 +11,25 @@ import NewsList from '../NewsList/NewsList';
 
 function ProviderNewsPage() {
   const { slug: providerSlug = '' } = useParams<{ slug: string }>();
-  const date = useAppSelector((state) => state.settings.date);
+  const filter = useAppSelector((state) => state.settings.filter);
   const category = useAppSelector(
     selectCategoryByProviderIdOrSlug(providerSlug),
   );
   const provider = useAppSelector(selectProviderByIdOrSlug(providerSlug));
-  const providerNews = useFetchProviderNews(provider?.id, date);
+  const providerNews = useFetchProviderNews({ providerId: provider?.id });
 
-  if (!providerNews?.news?.length || !provider) return null;
   return (
     <div>
-      <FilterBar />
+      <FilterBar allowAllTime />
       <br />
-      <NewsList
-        providerId={provider.id}
-        news={providerNews.news}
-        color={getCategoryColor(category?.name ?? '')}
-        isHeaderWithLink={false}
-      />
+      {providerNews?.news?.length && provider ? (
+        <NewsList
+          providerId={provider.id}
+          news={providerNews.news}
+          color={getCategoryColor(category?.name ?? '')}
+          isHeaderWithLink={false}
+        />
+      ) : null}
     </div>
   );
 }

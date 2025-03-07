@@ -16,9 +16,19 @@ type Props = {
 function NewsList({ providerId, news, color, isHeaderWithLink = true }: Props) {
   const provider = useAppSelector(selectProviderByIdOrSlug(providerId));
   const filter = useAppSelector((state) => state.settings.filter);
-  if (!news.length || !provider) return null;
+  const newsFilter = (news: Omit<INewsDto, 'providerId'>) => {
+    if (
+      (filter.length >= 3 &&
+        news.title.toLowerCase().includes(filter.toLowerCase())) ||
+      filter.length < 3
+    )
+      return news;
+  };
+  const filteredNews = news.filter(newsFilter) ?? [];
+
+  if (!filteredNews.length || !provider) return null;
   const rows =
-    news.map((news) => {
+    filteredNews.map((news) => {
       if (
         filter.length < 3 ||
         news.title.toLowerCase().includes(filter.toLowerCase())
