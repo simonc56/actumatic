@@ -15,24 +15,6 @@ const data = [
       { label: 'Contact', link: '/contact' },
     ],
   },
-  {
-    title: 'Projet',
-    links: [
-      { label: 'Contribuer', link: '#' },
-      { label: 'Media', link: '#' },
-      { label: 'Changelog', link: '#' },
-      { label: 'Releases', link: '#' },
-    ],
-  },
-  {
-    title: 'Communauté',
-    links: [
-      { label: 'Discord', link: '#' },
-      { label: 'Suivre sur X', link: '#' },
-      { label: 'Email newsletter', link: '#' },
-      { label: 'GitHub discussions', link: '#' },
-    ],
-  },
 ];
 
 export function FooterLinks() {
@@ -63,7 +45,7 @@ export function FooterLinks() {
         <div className={classes.logo}>
           <ActumaticLogo greyscale />
           <Text size="xs" c="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            Aggrégateur d'actualités numériques et technologiques.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
