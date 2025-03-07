@@ -22,7 +22,7 @@ export default function useGetDate() {
     humanReadableDate = 'La semaine dernière';
   }
   if (date === 'all-time') {
-    humanReadableDate = 'Tout';
+    humanReadableDate = '';
   }
   return humanReadableDate;
 }
