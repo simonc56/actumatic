@@ -68,7 +68,7 @@ function NewsList({ providerId, news, color, isHeaderWithLink = true }: Props) {
         borderRadius: '8px',
         border: `1px solid rgba(128, 128, 128, .2)`,
         overflow: 'hidden',
-        maxWidth: '946px', // half fullHD screen
+        // maxWidth: '784px', // half fullHD screen
       }}
     >
       <Table
