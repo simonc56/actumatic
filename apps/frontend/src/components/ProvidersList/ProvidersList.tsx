@@ -65,7 +65,7 @@ function ProvidersList({ categoryId, newsByProviders }: ProvidersListProps) {
         wrap="wrap"
         justify="flex-start"
         style={
-          isNarrowScreen ? { maxHeight: 100 + totalHeightInPixels / 2 } : {}
+          isNarrowScreen ? { maxHeight: 100 + totalHeightInPixels / 1.8 } : {}
         }
       >
         {newsByProviders.map((provider) => (
