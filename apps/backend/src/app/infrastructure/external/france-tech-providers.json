@@ -218,6 +218,13 @@
       "feedUrl": "https://hardwareand.co/all-content?format=feed&type=rss"
     },
     {
+      "name": "Mini Machines",
+      "url": "https://www.minimachines.net",
+      "category": "Hardware",
+      "feedType": "RSS2",
+      "feedUrl": "https://www.minimachines.net/feed"
+    },
+    {
       "name": "Maison et Domotique",
       "url": "https://www.maison-et-domotique.com",
       "category": "Domotique",
