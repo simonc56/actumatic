@@ -20,11 +20,7 @@ const settingsSlice = createSlice({
     resetSettings: () => getInitialSettingsState(),
     setDate: (state, action: PayloadAction<string>) => {
       const allowedDates = ['today', 'yesterday', 'all-time'];
-      if (
-        !allowedDates.includes(
-          action.payload.toLowerCase().replace(/[^a-z]/g, ''),
-        )
-      ) {
+      if (!allowedDates.includes(action.payload)) {
         return;
       }
       state.date = action.payload;
