@@ -9,13 +9,14 @@ export function getCategoryColor(category: string): string {
   // Couleurs prédéfinies pour certaines catégories
   const predefinedColors: Record<string, string> = {
     Numérique: '#1864ab',
-    Mobile: '#294668',
+    Mobile: '#395678',
     Pro: '#545ba6',
+    Linux: '#b2690e',
     Dev: '#7b3756',
     Cybersécurité: '#7C6868',
     Domotique: '#5f8f56',
-    Apple: '#3A707F',
-    Hardware: '#404040',
+    Apple: '#3f7575',
+    Hardware: '#505050',
   };
   if (predefinedColors[category]) {
     return predefinedColors[category];
