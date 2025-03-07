@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICategoryDetailedDto, IProviderDto } from '@shared-libs';
 import categoryApi from 'src/features/category';
 import { getInitialSettingsState } from './localStorage';
@@ -16,7 +16,23 @@ export const fetchCategoriesAndProviders = createAsyncThunk(
 const settingsSlice = createSlice({
   name: 'settings',
   initialState: getInitialSettingsState,
-  reducers: {},
+  reducers: {
+    resetSettings: () => getInitialSettingsState(),
+    setDate: (state, action: PayloadAction<string>) => {
+      const allowedDates = ['today', 'yesterday', 'all-time'];
+      if (
+        !allowedDates.includes(
+          action.payload.toLowerCase().replace(/[^a-z]/g, ''),
+        )
+      ) {
+        return;
+      }
+      state.date = action.payload;
+    },
+    setFilter: (state, action: PayloadAction<string>) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCategoriesAndProviders.fulfilled, (state, action) => {
@@ -38,5 +54,7 @@ const settingsSlice = createSlice({
       });
   },
 });
+
+export const { resetSettings, setDate, setFilter } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

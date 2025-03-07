@@ -5,6 +5,8 @@ export const getInitialSettingsState = () => {
   const defaultSettingsState: SettingsState = {
     categories: [],
     providers: [],
+    date: 'today',
+    filter: '',
   };
   return defaultSettingsState;
 };
