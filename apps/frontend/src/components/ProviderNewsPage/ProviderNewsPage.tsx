@@ -11,7 +11,6 @@ import NewsList from '../NewsList/NewsList';
 
 function ProviderNewsPage() {
   const { slug: providerSlug = '' } = useParams<{ slug: string }>();
-  const filter = useAppSelector((state) => state.settings.filter);
   const category = useAppSelector(
     selectCategoryByProviderIdOrSlug(providerSlug),
   );
