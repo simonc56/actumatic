@@ -1,8 +1,9 @@
-import { useSearchParams } from 'react-router-dom';
+import { useAppSelector } from 'src/app/hooks';
 
 export default function useGetDate() {
-  const [searchParams] = useSearchParams();
-  const date = searchParams.get('date');
+  // const [searchParams] = useSearchParams();
+  // const date = searchParams.get('date');
+  const date = useAppSelector((state) => state.settings.date);
   const options: Intl.DateTimeFormatOptions = {
     weekday: 'long',
     year: 'numeric',

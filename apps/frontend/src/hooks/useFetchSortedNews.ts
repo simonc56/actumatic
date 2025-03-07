@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { useGetSortedNewsQuery } from 'src/features/news';
 
 type NewsQueryOptions = {
@@ -29,9 +28,9 @@ const setQueryOptions = (date: string): NewsQueryOptions => {
   return options;
 };
 
-export default function useFetchSortedNews() {
-  const [searchParams] = useSearchParams();
-  const date = searchParams.get('date');
+export default function useFetchSortedNews(date: string) {
+  // const [searchParams] = useSearchParams();
+  // const date = searchParams.get('date');
   const queryOptions = setQueryOptions(date || 'today');
   const { data: sortedNews } = useGetSortedNewsQuery(queryOptions, {
     refetchOnFocus: true,
