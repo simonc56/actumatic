@@ -42,6 +42,7 @@
 .groups {
   display: flex;
   flex-wrap: wrap;
+  text-align: right;
 
   @media (max-width: $mantine-breakpoint-sm) {
     display: none;
