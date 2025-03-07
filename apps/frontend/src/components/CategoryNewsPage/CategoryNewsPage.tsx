@@ -17,6 +17,7 @@ function CategoryNewsPage() {
     <>
       <FilterBar allowAllTime />
       <ProvidersList
+        isHeaderWithLink={false}
         categoryId={category.id}
         newsByProviders={newsByProviders}
       />

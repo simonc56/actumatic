@@ -1,6 +1,7 @@
 import { Flex, Title } from '@mantine/core';
 import { INewsDto } from '@shared-libs';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppSelector } from 'src/app/hooks';
 import { selectCategoryByIdOrSlug } from 'src/app/store';
 import { getCategoryColor } from 'src/utils/style';
@@ -8,6 +9,7 @@ import NewsList from '../NewsList/NewsList';
 import classes from './ProvidersList.module.css';
 
 type ProvidersListProps = {
+  isHeaderWithLink?: boolean;
   categoryId: string;
   newsByProviders: {
     providerId: string;
@@ -27,7 +29,11 @@ function countProvidersAndNews(
   return [nbOfProviders, nbOfNews];
 }
 
-function ProvidersList({ categoryId, newsByProviders }: ProvidersListProps) {
+function ProvidersList({
+  isHeaderWithLink = true,
+  categoryId,
+  newsByProviders,
+}: ProvidersListProps) {
   const category = useAppSelector(selectCategoryByIdOrSlug(categoryId));
   const [isNarrowScreen, setIsNarrowScreen] = useState(false);
   const [nbOfProviders, nbOfNews] = countProvidersAndNews(newsByProviders);
@@ -57,7 +63,16 @@ function ProvidersList({ categoryId, newsByProviders }: ProvidersListProps) {
         className={classes.categoryTitle}
         style={{ color: getCategoryColor(category.name) }}
       >
-        {category.name}
+        {isHeaderWithLink ? (
+          <Link
+            to={`/category/${category.slug}`}
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            {category.name}
+          </Link>
+        ) : (
+          category.name
+        )}
       </Title>
       <Flex
         direction="column"
