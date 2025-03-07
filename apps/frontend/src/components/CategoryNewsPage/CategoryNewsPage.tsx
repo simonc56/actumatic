@@ -15,7 +15,7 @@ function CategoryNewsPage() {
   if (!newsByProviders?.length) return null;
   return (
     <>
-      <FilterBar />
+      <FilterBar allowAllTime />
       <ProvidersList
         categoryId={category.id}
         newsByProviders={newsByProviders}
