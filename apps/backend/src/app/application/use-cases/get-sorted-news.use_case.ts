@@ -75,7 +75,7 @@ export class GetSortedNewsUseCase {
           .filter((provider) => provider.categoryId === category.id)
           .map(({ providerId, news }) => ({
             providerId,
-            news,
+            news: news.slice(0, 50),
           }));
 
         return {

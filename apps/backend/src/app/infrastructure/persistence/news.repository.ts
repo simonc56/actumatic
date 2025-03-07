@@ -68,7 +68,7 @@ export class NewsRepository implements INewsRepository {
     const news: News[] = await this.prisma.news.findMany({
       where,
       orderBy: [{ createdAt: 'desc' }],
-      take: 500,
+      take: 2000,
     });
     return news.map((news) => new News(news));
   }
