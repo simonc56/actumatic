@@ -35,7 +35,12 @@ function FilterBar() {
         onChange={handleOnChangeDate}
       />
       <p>{date}</p>
-      <TextInput radius="md" placeholder="Filtre" />
+      <TextInput
+        radius="md"
+        placeholder="Filtre"
+        value={filter}
+        onChange={handleOnChangeFilter}
+      />
     </div>
   );
 }
