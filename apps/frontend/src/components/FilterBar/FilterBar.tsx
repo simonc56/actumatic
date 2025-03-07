@@ -31,6 +31,7 @@ function FilterBar({ allowAllTime = false }: { allowAllTime?: boolean }) {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
+        alignItems: 'center',
         flexWrap: 'wrap',
       }}
     >
