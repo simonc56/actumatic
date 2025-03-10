@@ -1,5 +1,5 @@
 import { useGetAllNewsByProviderQuery } from 'src/features/news';
-import { setQueryOptions } from './useFetchSortedNews';
+import { setQueryOptions } from 'src/utils/query';
 
 export default function useFetchProviderNews({
   providerId,
