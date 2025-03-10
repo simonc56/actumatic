@@ -1,0 +1,17 @@
+.section {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
+.question {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--mantine-color-blue-8);
+}
+
+.answer {
+  font-size: 1rem;
+  margin-top: 0.1rem;
+}
