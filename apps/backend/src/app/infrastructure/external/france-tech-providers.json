@@ -64,13 +64,6 @@
       "feedUrl": "https://www.generation-nt.com/export/rss.xml"
     },
     {
-      "name": "Clubic",
-      "url": "https://www.clubic.com",
-      "category": "Numérique",
-      "feedType": "RSS2",
-      "feedUrl": "https://www.clubic.com/feed/rss"
-    },
-    {
       "name": "Ginjfo",
       "url": "https://www.ginjfo.com",
       "category": "Numérique",
