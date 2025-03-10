@@ -86,3 +86,11 @@ export function parseFrenchDate(dateStr: string): Date {
 
   return result;
 }
+
+export function removeUnwantedPrefix(text: string): string {
+  const unwantedPrefixes = ['☕️ ', 'Actualité : '];
+  return unwantedPrefixes.reduce(
+    (acc, prefix) => (acc.startsWith(prefix) ? acc.slice(prefix.length) : acc),
+    text,
+  );
+}
