@@ -4,6 +4,7 @@ import {
   IconBrandGithub,
   IconBrandX,
 } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 import ActumaticLogo from '../Logo/ActumaticLogo';
 import classes from './FooterLinks.module.css';
 
@@ -13,6 +14,7 @@ const data = [
     links: [
       { label: 'FAQ', link: '/faq' },
       { label: 'Contact', link: '/contact' },
+      { label: 'Mentions légales', link: '/mentions-legales' },
     ],
   },
 ];
@@ -20,15 +22,9 @@ const data = [
 export function FooterLinks() {
   const groups = data.map((group) => {
     const links = group.links.map((link, index) => (
-      <Text<'a'>
-        key={index}
-        className={classes.link}
-        component="a"
-        href={link.link}
-        onClick={(event) => event.preventDefault()}
-      >
+      <Link key={index} className={classes.link} to={link.link}>
         {link.label}
-      </Text>
+      </Link>
     ));
 
     return (
