@@ -4,6 +4,7 @@ import classes from './FAQPage.module.css';
 function FAQPage() {
   return (
     <Container size="md">
+      <br />
       <Title order={1}>FAQ (Foire Aux Questions)</Title>
       <div className={classes.section}>Général</div>
       <div className={classes.question}>

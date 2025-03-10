@@ -4,6 +4,7 @@ import classes from './ContactPage.module.css';
 function ContactPage() {
   return (
     <Container size="md">
+      <br />
       <Title order={1}>Contact</Title>
       <p>
         Nous sommes ravis que vous utilisiez notre plateforme pour suivre
