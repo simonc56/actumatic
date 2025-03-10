@@ -17,19 +17,26 @@ export const setQueryOptions = (
   if (providerId) {
     options.providerId = providerId;
   }
+  // utilisation de setHours pour gérer les problèmes de fuseau horaire
   if (date === 'today') {
-    options.begin = new Date().toISOString().split('T')[0];
+    const todayBegin = new Date(new Date().setHours(0, 0, 0, 0));
+    options.begin = todayBegin.toISOString();
   }
   if (date === 'yesterday') {
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    options.begin = yesterday.toISOString().split('T')[0];
-    options.end = yesterday.toISOString().split('T')[0] + 'T23:59:59';
+    const yesterdayBegin = new Date(
+      new Date().setDate(new Date().getDate() - 1),
+    );
+    yesterdayBegin.setHours(23, 59, 59, 999);
+    const yesterdayEnd = new Date(new Date().setDate(new Date().getDate() - 1));
+    yesterdayEnd.setHours(0, 0, 0, 0);
+    options.begin = yesterdayBegin.toISOString();
+    options.end = yesterdayEnd.toISOString();
   }
   if (date === 'last-week') {
     const lastWeek = new Date();
     lastWeek.setDate(lastWeek.getDate() - 7);
-    options.begin = lastWeek.toISOString().split('T')[0];
+    lastWeek.setHours(0, 0, 0, 0);
+    options.begin = lastWeek.toISOString();
   }
   return options;
 };
