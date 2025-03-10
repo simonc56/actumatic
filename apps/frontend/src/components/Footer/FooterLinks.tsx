@@ -14,7 +14,7 @@ const data = [
     links: [
       { label: 'FAQ', link: '/faq' },
       { label: 'Contact', link: '/contact' },
-      { label: 'Mentions légales', link: '/mentions-legales' },
+      { label: 'Mentions légales', link: '/legal' },
     ],
   },
 ];
