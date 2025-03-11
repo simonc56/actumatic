@@ -1,8 +1,8 @@
 # 📰 Actumatic
 
-### Aggrégateur d'actualités numériques et technologiques
+### Aggrégateur d'actualités tech
 
-Site web regroupant toutes les actualités tech francophones en temps réel par aggrégation de flux RSS.
+Site web regroupant les actus des sites d'actualités tech francophones en temps réel par aggrégation de flux RSS
 
 🌱 Développé en clean architecture avec le gestionnaire de monorepo `nx`.
 
