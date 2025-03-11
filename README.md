@@ -1,50 +1,63 @@
-# Actumatic
+# 📰 Actumatic
 
-Website to show last headlines of most famous news tech websites.
+### Aggrégateur d'actualités numériques et technologiques
+
+Site web regroupant toutes les actualités tech francophones en temps réel par aggrégation de flux RSS.
+
+🌱 Développé en clean architecture avec le gestionnaire de monorepo `nx`.
+
+- Stack backend : Nest.js, Prisma, Jest
+
+- Stack frontend : React, Redux Toolkit, Mantine, Vitest
 
 ## Setup
 
-- Install Postgresql and Node.
-- Create .env file based on .env.exemple and fill DATABASE_URL.
-- Install dependancies :
+Installer Postgresql et Node.js (ou utiliser Docker, voir ci-dessous)
+
+Créer le fichier `.env` à partir du `.env.exemple` et modifiez la variable `DATABASE_URL`
+
+Installer les dépendances :
 
 ```sh
 npm install
 ```
 
-- Create database and run migration :
+Créer la base de donnée et lancer la migration :
 
 ```sh
-# Create database
 createdb actumatic
-
-# Run prisma migrations
 npx prisma migrate dev
 ```
 
-## Run tasks
+## Lancement
 
-To run the dev server, use:
+Lancer le back et le front en mode dev :
 
 ```sh
 npm run backend:start
 npm run frontend:start
 ```
 
-To run both front & back in same command with :
+Pour build :
 
 ```sh
-npm run start
+npm run backend:build
+npm run frontend:build
 ```
 
-To create a production bundle of frontend:
+## Docker
+
+Préparer les fichiers secrets :
 
 ```sh
-npx nx build frontend
+secrets/postgres_user      # nom d'utilisateur postgres
+secrets/postgres_password  # mot de passe postgres
+secrets/postgres_db        # nom de la base de données dédiée au projet
+secrets/database_url       # url d'accès (idem .env)
 ```
+Modifier si besoin les ports dans le `compose.yaml`
 
-To see all available targets to run for a project, run:
-
+Puis lancer docker depuis le répertoire du projet :
 ```sh
-npx nx show project frontend
+docker compose up -d
 ```
