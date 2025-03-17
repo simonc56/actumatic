@@ -2,7 +2,7 @@
 
 ### Aggrégateur d'actualités tech
 
-Site web regroupant les actus des sites d'actualités tech francophones en temps réel par aggrégation de flux RSS
+Site web regroupant les articles des sites d'actualités tech francophones en temps réel.
 
 🌱 Développé en clean architecture avec le gestionnaire de monorepo `nx`.
 
