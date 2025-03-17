@@ -39,7 +39,7 @@ export function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <ActumaticLogo greyscale />
+          <ActumaticLogo greyscale icon={false} />
           <Text size="xs" c="dimmed" className={classes.description}>
             Aggrégateur d'actualités numériques et technologiques.
           </Text>
