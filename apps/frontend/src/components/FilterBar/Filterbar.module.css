@@ -1,0 +1,28 @@
+.filterBar {
+  background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-inline: 0.8rem;
+    min-height: 52px;;
+    max-width: 1600px;
+    margin-inline: auto;
+  }
+}
+
+.date {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 650px) {
+  .date {
+    display: none;
+  }
+  
+}
+
+.filter input {
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+}

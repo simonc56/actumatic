@@ -3,6 +3,7 @@ import { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from 'src/app/hooks';
 import { setDate, setFilter } from 'src/app/services/settingsSlice';
 import useGetDate from 'src/hooks/useGetDate';
+import classes from './Filterbar.module.css';
 
 function FilterBar({ allowAllTime = false }: { allowAllTime?: boolean }) {
   const date = useAppSelector((state) => state.settings.date);
@@ -28,30 +29,29 @@ function FilterBar({ allowAllTime = false }: { allowAllTime?: boolean }) {
 
   return (
     <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-      }}
+      className={classes.filterBar}
     >
-      <SegmentedControl
-        withItemsBorders={false}
-        radius="md"
-        data={Array.from(daysMap.keys())}
-        value={Array.from(daysMap.keys()).find(
-          (key) => daysMap.get(key) === date,
-        )}
-        onChange={handleOnChangeDate}
-        style={{ maxHeight: '40px' }}
-      />
-      <p>{humanReadabledate}</p>
-      <TextInput
-        radius="md"
-        placeholder="Filtre"
-        value={filter}
-        onChange={handleOnChangeFilter}
-      />
+      <div className={classes.filterBar__content}>
+        <SegmentedControl
+          withItemsBorders={false}
+          radius="md"
+          data={Array.from(daysMap.keys())}
+          value={Array.from(daysMap.keys()).find(
+            (key) => daysMap.get(key) === date,
+          )}
+          onChange={handleOnChangeDate}
+          style={{ maxHeight: '40px' }}
+        />
+        <p className={classes.date}>{humanReadabledate}</p>
+        <TextInput
+          radius="md"
+          placeholder="Filtre"
+          value={filter}
+          onChange={handleOnChangeFilter}
+          w={150}
+          className={classes.filter}
+        />
+      </div>
     </div>
   );
 }
