@@ -7,7 +7,7 @@ function SortedNewsList() {
   const sortedNews = useFetchSortedNews();
 
   return (
-      <div>
+      <div style={{flexGrow: 1}}>
         <FilterBar />
         <Container size={1600}>
           {sortedNews?.length
