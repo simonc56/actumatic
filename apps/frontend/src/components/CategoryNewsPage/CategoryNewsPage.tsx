@@ -1,3 +1,4 @@
+import { Container } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from 'src/app/hooks';
 import { selectCategoryByIdOrSlug } from 'src/app/store';
@@ -14,14 +15,16 @@ function CategoryNewsPage() {
   )?.providers;
   if (!newsByProviders?.length) return null;
   return (
-    <>
-      <FilterBar allowAllTime />
-      <ProvidersList
-        isHeaderWithLink={false}
-        categoryId={category.id}
-        newsByProviders={newsByProviders}
-      />
-    </>
+      <div style={{flexGrow: 1}}>
+        <FilterBar allowAllTime />
+        <Container size={1600}>
+        <ProvidersList
+          isHeaderWithLink={false}
+          categoryId={category.id}
+          newsByProviders={newsByProviders}
+        />
+        </Container>
+      </div>
   );
 }
 

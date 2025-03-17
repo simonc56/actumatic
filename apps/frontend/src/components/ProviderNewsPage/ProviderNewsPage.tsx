@@ -1,3 +1,4 @@
+import { Container } from '@mantine/core';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from 'src/app/hooks';
 import {
@@ -18,9 +19,10 @@ function ProviderNewsPage() {
   const providerNews = useFetchProviderNews({ providerId: provider?.id });
 
   return (
-    <div>
+    <div style={{flexGrow: 1}}>
       <FilterBar allowAllTime />
       <br />
+      <Container size={1600}>
       {providerNews?.news?.length && provider ? (
         <NewsList
           providerId={provider.id}
@@ -28,7 +30,7 @@ function ProviderNewsPage() {
           color={getCategoryColor(category?.name ?? '')}
           isHeaderWithLink={false}
         />
-      ) : null}
+      ) : null}</Container>
     </div>
   );
 }
