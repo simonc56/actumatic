@@ -60,7 +60,7 @@ export default function Header() {
             >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown size={14} stroke={1.5} />
+                <IconChevronDown className={classes.svg} size={14} stroke={1.5} />
               </Center>
             </a>
           </Menu.Target>
@@ -89,7 +89,7 @@ export default function Header() {
           <Group gap={5} visibleFrom="sm">
             {items}
           </Group>
-          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" color="white" />
         </div>
       </Container>
     </header>
