@@ -279,20 +279,6 @@
       "category": "Linux",
       "feedType": "RSS2",
       "feedUrl": "https://www.linuxtricks.fr/syndication/rss/news"
-    },
-    {
-      "name": "Distributique",
-      "url": "https://www.distributique.com",
-      "category": "Pro",
-      "feedType": "RSS2",
-      "feedUrl": "https://www.distributique.com/flux-rss/rss.php"
-    },
-    {
-      "name": "Le Monde Informatique",
-      "url": "https://www.lemondeinformatique.fr",
-      "category": "Pro",
-      "feedType": "RSS2",
-      "feedUrl": "https://www.lemondeinformatique.fr/flux-rss/thematique/toutes-les-actualites/rss.xml"
     }
   ]
 }
