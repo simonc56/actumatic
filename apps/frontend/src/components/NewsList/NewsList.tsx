@@ -26,7 +26,6 @@ function NewsList({ providerId, news, color, isHeaderWithLink = true }: Props) {
   };
   const filteredNews = news.filter(newsFilter) ?? [];
 
-  if (!filteredNews.length || !provider) return null;
   const rows =
     filteredNews.map((news) => {
       if (
@@ -88,16 +87,16 @@ function NewsList({ providerId, news, color, isHeaderWithLink = true }: Props) {
             >
               {isHeaderWithLink ? (
                 <Link
-                  to={`/provider/${provider.slug}`}
+                  to={`/provider/${provider?.slug}`}
                   style={{
                     color: 'inherit',
                     textDecoration: 'none',
                   }}
                 >
-                  {provider.name}
+                  {provider?.name}
                 </Link>
               ) : (
-                provider.name
+                provider?.name
               )}
             </Table.Th>
           </Table.Tr>

@@ -8,6 +8,7 @@ import {
 import useFetchProviderNews from 'src/hooks/useFetchProviderNews';
 import { getCategoryColor } from 'src/utils/style';
 import FilterBar from '../FilterBar/FilterBar';
+import Loader from '../Loader/Loader';
 import NewsList from '../NewsList/NewsList';
 
 function ProviderNewsPage() {
@@ -19,18 +20,21 @@ function ProviderNewsPage() {
   const providerNews = useFetchProviderNews({ providerId: provider?.id });
 
   return (
-    <div style={{flexGrow: 1}}>
+    <div style={{ flexGrow: 1 }}>
       <FilterBar allowAllTime />
       <br />
       <Container size={1600}>
-      {providerNews?.news?.length && provider ? (
-        <NewsList
-          providerId={provider.id}
-          news={providerNews.news}
-          color={getCategoryColor(category?.name ?? '')}
-          isHeaderWithLink={false}
-        />
-      ) : null}</Container>
+        {providerNews?.news?.length && provider ? (
+          <NewsList
+            providerId={provider.id}
+            news={providerNews.news}
+            color={getCategoryColor(category?.name ?? '')}
+            isHeaderWithLink={false}
+          />
+        ) : (
+          <Loader label="Chargement..." />
+        )}
+      </Container>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useAppSelector } from 'src/app/hooks';
 import { selectCategoryByIdOrSlug } from 'src/app/store';
 import useFetchSortedNews from 'src/hooks/useFetchSortedNews';
 import FilterBar from '../FilterBar/FilterBar';
+import Loader from '../Loader/Loader';
 import ProvidersList from '../ProvidersList/ProvidersList';
 
 function CategoryNewsPage() {
@@ -13,18 +14,18 @@ function CategoryNewsPage() {
   const newsByProviders = sortedNews?.find(
     (categoryCandidate) => categoryCandidate.categoryId === category.id,
   )?.providers;
-  if (!newsByProviders?.length) return null;
+  if (!newsByProviders?.length) return <Loader label="Chargement..." />;
   return (
-      <div style={{flexGrow: 1}}>
-        <FilterBar allowAllTime />
-        <Container size={1600}>
+    <div style={{ flexGrow: 1 }}>
+      <FilterBar allowAllTime />
+      <Container size={1600}>
         <ProvidersList
           isHeaderWithLink={false}
           categoryId={category.id}
           newsByProviders={newsByProviders}
         />
-        </Container>
-      </div>
+      </Container>
+    </div>
   );
 }
 

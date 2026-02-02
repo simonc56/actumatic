@@ -55,7 +55,6 @@ function ProvidersList({
     };
   }, []);
 
-  if (!newsByProviders.length || !category) return null;
   return (
     <>
       <Title

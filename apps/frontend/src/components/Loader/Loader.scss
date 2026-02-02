@@ -1,0 +1,25 @@
+.loader {
+  margin-top: 5em;
+  & .spinner {
+    margin: 1em auto;
+    border: 10px solid rgba(128, 128, 128, 0.1);
+    border-top: 10px solid rgb(24, 100, 171);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+  }
+  & .label {
+    text-align: center;
+    font-size: var(--font-size-md);
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
