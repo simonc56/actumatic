@@ -60,17 +60,17 @@ function ProvidersList({
       <Title
         order={2}
         className={classes.categoryTitle}
-        style={{ color: getCategoryColor(category.name) }}
+        style={{ color: getCategoryColor(category?.name ?? '') }}
       >
         {isHeaderWithLink ? (
           <Link
-            to={`/category/${category.slug}`}
+            to={`/category/${category?.slug}`}
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            {category.name}
+            {category?.name}
           </Link>
         ) : (
-          category.name
+          category?.name
         )}
       </Title>
       <Flex
@@ -89,7 +89,7 @@ function ProvidersList({
             providerId={provider.providerId}
             key={provider.providerId}
             news={provider.news}
-            color={getCategoryColor(category.name)}
+            color={getCategoryColor(category?.name ?? '')}
           />
         ))}
       </Flex>

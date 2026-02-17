@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { IProviderDto } from '@shared-libs';
+import { ICategoryDetailedDto, IProviderDto } from '@shared-libs';
 import { enhancedApi } from './services/api';
 import settingsReducer from './services/settingsSlice';
 
@@ -20,7 +20,8 @@ setupListeners(store.dispatch);
 
 // selector to get a category from its id
 export const selectCategoryByIdOrSlug =
-  (categoryId: string) => (state: RootState) =>
+  (categoryId: string) =>
+  (state: RootState): ICategoryDetailedDto | undefined =>
     state.settings.categories.find(
       (category) => category.id === categoryId || category.slug === categoryId,
     );
