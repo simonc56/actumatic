@@ -102,5 +102,18 @@
     "vite": "^5.0.0",
     "vitest": "1.6.1",
     "webpack-cli": "^5.1.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "@parcel/watcher",
+      "@prisma/client",
+      "@prisma/engines",
+      "@swc/core",
+      "esbuild",
+      "msw",
+      "nx",
+      "prisma"
+    ]
   }
 }
