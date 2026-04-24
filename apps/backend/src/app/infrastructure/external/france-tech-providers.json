@@ -64,20 +64,6 @@
       "feedUrl": "https://www.generation-nt.com/export/rss.xml"
     },
     {
-      "name": "Ginjfo",
-      "url": "https://www.ginjfo.com",
-      "category": "Numérique",
-      "feedType": "RSS2",
-      "feedUrl": "https://www.ginjfo.com/actualites/rss"
-    },
-    {
-      "name": "Presse-Citron",
-      "url": "https://www.presse-citron.net",
-      "category": "Numérique",
-      "feedType": "RSS2",
-      "feedUrl": "https://www.presse-citron.net/feed/"
-    },
-    {
       "name": "Journal du geek",
       "url": "https://www.journaldugeek.com",
       "category": "Numérique",
