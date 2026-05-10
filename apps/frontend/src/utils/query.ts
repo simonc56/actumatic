@@ -28,7 +28,6 @@ export const setQueryOptions = (
     yesterdayBegin.setHours(0, 0, 0, 0);
     const yesterdayEnd = new Date(new Date().setDate(new Date().getDate() - 1));
     yesterdayEnd.setHours(23, 59, 59, 999);
-    console.log('yesterdayEnd', yesterdayEnd);
     options.begin = yesterdayBegin.toISOString();
     options.end = yesterdayEnd.toISOString();
   }
@@ -38,6 +37,5 @@ export const setQueryOptions = (
     lastWeek.setHours(0, 0, 0, 0);
     options.begin = lastWeek.toISOString();
   }
-  console.log(options);
   return options;
 };
