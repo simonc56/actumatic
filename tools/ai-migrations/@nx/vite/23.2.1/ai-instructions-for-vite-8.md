@@ -113,9 +113,11 @@ rg '@analogjs/vite-plugin-angular' --type ts --type js
 
 Vite 8 ships its types only via conditional `exports` (it dropped the top-level `types` field that Vite 7 carried), which TypeScript cannot resolve under `moduleResolution: "node"`. Symptoms include type errors on `defineConfig`, `UserConfig`, or plugin return types.
 
+`moduleResolution: "bundler"` is the right fit for Vite and other ESM-oriented configs, but it is not a drop-in replacement for CommonJS/Nest projects. Those configs still need a Node-compatible pair such as `node16`/`node16` or `nodenext`/`nodenext`.
+
 **Action Items**:
 
-- [ ] Update affected `tsconfig*.json` files: `"moduleResolution": "bundler"` (recommended) or `"node16"`/`"nodenext"`
+- [ ] Update affected `tsconfig*.json` files: use `"moduleResolution": "bundler"` for Vite/ESM configs, or `"node16"`/`"nodenext"` for CommonJS Node/Nest configs
 - [ ] If you cannot change `moduleResolution`, narrow the impact with explicit `as any` casts at vite imports. The Nx-generated configs already do this in a handful of places.
 - [ ] Run `tsc --noEmit` after the change to confirm types resolve cleanly
 
@@ -207,7 +209,7 @@ nx prepush
 
 ### Issue: Type errors on `defineConfig`, `UserConfig`, or `Plugin` imports from vite
 
-**Solution**: Set `moduleResolution: "bundler"` in your tsconfig (or `nodenext` if you need Node-style resolution).
+**Solution**: Use `moduleResolution: "bundler"` for Vite/ESM tsconfigs. Keep CommonJS projects on a compatible Node pair such as `node16`/`node16` or `nodenext`/`nodenext`.
 
 ### Issue: Cypress CT fails to start under Vite 8
 
