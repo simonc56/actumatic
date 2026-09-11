@@ -1,4 +1,4 @@
-import { ICreateUserDto } from "@shared-libs";
+import { ICreateUserDto } from '@actumatic/libs';
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateUserDto implements ICreateUserDto {

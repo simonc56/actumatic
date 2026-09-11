@@ -1,4 +1,4 @@
-import { IProviderDto } from '@shared-libs';
+import { IProviderDto } from '@actumatic/libs';
 
 export type SettingsState = {
   categories: ICategoryDetailedDto[];

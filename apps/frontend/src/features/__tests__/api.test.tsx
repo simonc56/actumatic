@@ -1,4 +1,4 @@
-import { IProviderDto } from '@shared-libs';
+import { IProviderDto } from '@actumatic/libs';
 import { renderHook, waitFor } from '@testing-library/react';
 import { http } from 'msw';
 import { setupServer } from 'msw/node';

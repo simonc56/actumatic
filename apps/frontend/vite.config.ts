@@ -28,7 +28,6 @@ export default defineConfig(({ mode }: ConfigEnv) => {
     plugins: [react(), nxCopyAssetsPlugin(['*.md'])],
     resolve: {
       alias: {
-        '@shared-libs': path.resolve(__dirname, '../../libs/src/index.ts'),
         src: path.resolve(__dirname, './src'),
         '@tabler/icons-react': '@tabler/icons-react/dist/esm/icons/index.mjs',
       },

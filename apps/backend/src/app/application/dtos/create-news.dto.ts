@@ -1,4 +1,4 @@
-import { ICreateNewsDto } from '@shared-libs';
+import { ICreateNewsDto } from '@actumatic/libs';
 import {
   IsDateString,
   IsNotEmpty,

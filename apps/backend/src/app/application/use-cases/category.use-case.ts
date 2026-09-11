@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ICategoryDto, IProviderDto } from '@shared-libs';
+import { ICategoryDto, IProviderDto } from '@actumatic/libs';
 import {
   CategoriesAndProviders,
   Category,

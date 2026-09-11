@@ -1,4 +1,4 @@
-import { INewsDto, ISortedNewsDto } from '@shared-libs';
+import { INewsDto, ISortedNewsDto } from '@actumatic/libs';
 
 export type INews = INewsDto & {};
 

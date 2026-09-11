@@ -7,11 +7,6 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "types": ["vite/client", "vitest"],
-    "baseUrl": ".",
-    "paths": {
-      "@shared-libs": ["../../libs/src/index.ts"]
-    },
-    "ignoreDeprecations": "6.0"
   },
   "files": [],
   "include": [],

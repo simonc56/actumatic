@@ -1,4 +1,4 @@
-import { ICategoriesAndProvidersDto, ICategoryDto } from '@shared-libs';
+import { ICategoriesAndProvidersDto, ICategoryDto } from '@actumatic/libs';
 import { ICategory } from 'src/@types/category';
 import { enhancedApi } from '../app/services/api';
 

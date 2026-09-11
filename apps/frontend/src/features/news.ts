@@ -1,4 +1,4 @@
-import { INewsDto, IProviderNewsDto } from '@shared-libs';
+import { INewsDto, IProviderNewsDto } from '@actumatic/libs';
 import { INews, ISortedNews, NewsParamsType } from 'src/@types/news';
 import { enhancedApi } from '../app/services/api';
 

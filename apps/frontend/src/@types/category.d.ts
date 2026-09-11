@@ -1,3 +1,3 @@
-import { ICategoryDto } from "@shared-libs";
+import { ICategoryDto } from '@actumatic/libs';
 
 export type ICategory = ICategoryDto & {}

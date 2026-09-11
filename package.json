@@ -26,6 +26,7 @@
   },
   "private": true,
   "dependencies": {
+    "@actumatic/libs": "workspace:*",
     "@mantine/core": "^9.2.0",
     "@mantine/hooks": "^9.2.0",
     "@nestjs/common": "^10.0.2",
