@@ -1,5 +1,5 @@
 # -- Build Stage --
-FROM node:22-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 
 # Enable corepack and install pnpm manually
@@ -15,7 +15,7 @@ RUN pnpm dlx nx build backend --configuration=production
 RUN pnpm dlx nx build frontend --configuration=production
 
 # -- Backend Stage --
-FROM node:22-alpine AS backend
+FROM node:24-alpine AS backend
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY package.json pnpm-lock.yaml ./
