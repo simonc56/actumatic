@@ -1,6 +1,6 @@
+import { ICategoryDetailedDto, IProviderDto } from '@actumatic/libs';
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { ICategoryDetailedDto, IProviderDto } from '@actumatic/libs';
 import { enhancedApi } from './services/api';
 import settingsReducer from './services/settingsSlice';
 
