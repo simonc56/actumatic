@@ -1,5 +1,5 @@
+import { ICategoryDetailedDto, IProviderDto } from '@actumatic/libs';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICategoryDetailedDto, IProviderDto } from '@shared-libs';
 import categoryApi from 'src/features/category';
 import { getInitialSettingsState } from './localStorage';
 

@@ -1,4 +1,4 @@
-import { IUserDto } from '@shared-libs';
+import { IUserDto } from '@actumatic/libs';
 import { IUser } from 'src/@types/user';
 import { enhancedApi } from '../app/services/api';
 

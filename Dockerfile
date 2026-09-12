@@ -1,11 +1,12 @@
 # -- Build Stage --
-FROM node:22-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 
 # Enable corepack and install pnpm manually
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY libs/package.json ./libs/package.json
 RUN pnpm install --frozen-lockfile
 COPY . .
 # Generate Prisma Client before building the backend
@@ -15,10 +16,11 @@ RUN pnpm dlx nx build backend --configuration=production
 RUN pnpm dlx nx build frontend --configuration=production
 
 # -- Backend Stage --
-FROM node:22-alpine AS backend
+FROM node:24-alpine AS backend
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY libs/package.json ./libs/package.json
 RUN pnpm install --prod --frozen-lockfile
 COPY --from=build /app/apps/backend/prisma ./prisma
 COPY --from=build /app/dist ./dist

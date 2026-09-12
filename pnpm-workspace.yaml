@@ -1,3 +1,6 @@
+packages:
+  - libs
+
 allowBuilds:
   '@nestjs/core': true
   '@parcel/watcher': true

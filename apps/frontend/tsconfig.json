@@ -2,15 +2,14 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "moduleResolution": "bundler",
+    "paths": {
+      "src/*": ["./src/*"]
+    },
     "allowJs": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": ["vite/client", "vitest"],
-    "baseUrl": ".",
-    "paths": {
-      "@shared-libs": ["../../libs/src/index.ts"]
-    }
+    "types": ["vite/client", "vitest"]
   },
   "files": [],
   "include": [],

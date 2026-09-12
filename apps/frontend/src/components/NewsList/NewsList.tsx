@@ -1,5 +1,5 @@
+import { INewsDto } from '@actumatic/libs';
 import { Anchor, Table } from '@mantine/core';
-import { INewsDto } from '@shared-libs';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from 'src/app/hooks';
 import { selectProviderByIdOrSlug } from 'src/app/store';

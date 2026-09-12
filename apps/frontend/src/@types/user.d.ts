@@ -1,5 +1,5 @@
-import { IUserDto } from "@shared-libs";
+import { IUserDto } from '@actumatic/libs';
 
 // je laisse la possibilité de rajouter des propriétés à IUser
 // spécifique à l'application frontend
-export type IUser = IUserDto & {}
+export type IUser = IUserDto & {};

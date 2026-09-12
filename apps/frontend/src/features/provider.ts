@@ -1,4 +1,4 @@
-import { IProviderDto } from '@shared-libs';
+import { IProviderDto } from '@actumatic/libs';
 import { IProvider } from 'src/@types/provider';
 import { enhancedApi } from '../app/services/api';
 

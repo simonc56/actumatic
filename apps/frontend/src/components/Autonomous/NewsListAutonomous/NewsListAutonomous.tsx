@@ -1,5 +1,5 @@
+import { IProviderDto } from '@actumatic/libs';
 import { Anchor, Table } from '@mantine/core';
-import { IProviderDto } from '@shared-libs';
 import { useGetAllNewsByProviderQuery } from 'src/features/news';
 import { isoToTimeString } from 'src/utils/datetime';
 

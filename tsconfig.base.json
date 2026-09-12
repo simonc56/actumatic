@@ -4,7 +4,7 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": false,
@@ -13,10 +13,10 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@shared-libs": ["libs/src/index.ts"]
-    }
+    "strict": false,
+    "noUncheckedSideEffectImports": false,
+    "types": ["*"],
+    "esModuleInterop": true
   },
   "exclude": ["node_modules", "tmp"]
 }

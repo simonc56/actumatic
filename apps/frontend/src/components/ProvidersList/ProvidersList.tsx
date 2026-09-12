@@ -1,5 +1,5 @@
+import { INewsDto } from '@actumatic/libs';
 import { Flex, Title } from '@mantine/core';
-import { INewsDto } from '@shared-libs';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from 'src/app/hooks';

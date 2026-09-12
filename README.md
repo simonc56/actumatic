@@ -19,14 +19,16 @@ Créer le fichier `.env` à partir du `.env.exemple` et modifiez la variable `DA
 Installer les dépendances :
 
 ```sh
-npm install
+pnpm install
 ```
+
+Ce dépôt utilise `pnpm` comme gestionnaire de paquets. Le fichier `pnpm-lock.yaml` est la source de vérité; `package-lock.json` n'est pas utilisé.
 
 Créer la base de donnée et lancer la migration :
 
 ```sh
 createdb actumatic
-npx prisma migrate dev
+pnpm prisma migrate dev
 ```
 
 ## Lancement
@@ -34,15 +36,15 @@ npx prisma migrate dev
 Lancer le back et le front en mode dev :
 
 ```sh
-npm run backend:start
-npm run frontend:start
+pnpm backend:start
+pnpm frontend:start
 ```
 
 Pour build :
 
 ```sh
-npm run backend:build
-npm run frontend:build
+pnpm backend:build
+pnpm frontend:build
 ```
 
 ## Docker
