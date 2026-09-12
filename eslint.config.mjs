@@ -6,13 +6,13 @@ export default [
   ...nx.configs['flat/javascript'],
   {
     ignores: [
-      '**/dist',
+      'dist',
       '**/vite.config.*.timestamp*',
       '**/vitest.config.*.timestamp*',
     ],
   },
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
     rules: {
       '@nx/enforce-module-boundaries': [
         'error',
@@ -28,17 +28,5 @@ export default [
         },
       ],
     },
-  },
-  {
-    files: [
-      '**/*.ts',
-      '**/*.tsx',
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.cjs',
-      '**/*.mjs',
-    ],
-    // Override or add rules here
-    rules: {},
   },
 ];
