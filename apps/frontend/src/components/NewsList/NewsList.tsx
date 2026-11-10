@@ -28,37 +28,32 @@ function NewsList({ providerId, news, color, isHeaderWithLink = true }: Props) {
 
   const rows =
     filteredNews.map((news) => {
-      if (
-        filter.length < 3 ||
-        news.title.toLowerCase().includes(filter.toLowerCase())
-      ) {
-        return (
-          <Table.Tr key={news.url}>
-            <Table.Td w={76} opacity={0.7} fz={12} style={{ paddingInline: 6 }}>
-              {isoToShortDateString(news.createdAt)}{' '}
-              {isoToTimeString(news.createdAt)}
-            </Table.Td>
-            <Table.Td
-              maw="md"
-              style={{
-                paddingInline: 6,
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-              }}
+      return (
+        <Table.Tr key={news.url}>
+          <Table.Td w={76} opacity={0.7} fz={12} style={{ paddingInline: 6 }}>
+            {isoToShortDateString(news.createdAt)}{' '}
+            {isoToTimeString(news.createdAt)}
+          </Table.Td>
+          <Table.Td
+            maw="md"
+            style={{
+              paddingInline: 6,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <Anchor
+              href={news.url}
+              target="_blank"
+              fz={14}
+              className={classes.newsTitle}
             >
-              <Anchor
-                href={news.url}
-                target="_blank"
-                fz={14}
-                className={classes.newsTitle}
-              >
-                {news.title}
-              </Anchor>
-            </Table.Td>
-          </Table.Tr>
-        );
-      }
+              {news.title}
+            </Anchor>
+          </Table.Td>
+        </Table.Tr>
+      );
     }) ?? [];
 
   return (
