@@ -30,7 +30,12 @@ function NewsList({ providerId, news, color, isHeaderWithLink = true }: Props) {
     filteredNews.map((news) => {
       return (
         <Table.Tr key={news.url}>
-          <Table.Td w={76} opacity={0.7} fz={12} style={{ paddingInline: 6 }}>
+          <Table.Td
+            w={76}
+            opacity={0.7}
+            fz={12}
+            style={{ paddingInline: 6, whiteSpace: 'nowrap' }}
+          >
             {isoToShortDateString(news.createdAt)}{' '}
             {isoToTimeString(news.createdAt)}
           </Table.Td>
