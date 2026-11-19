@@ -1,3 +1,4 @@
+import type { Reducer } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import { cleanup } from '@testing-library/react';
 import { afterEach } from 'vitest';
@@ -10,7 +11,7 @@ afterEach(() => {
 
 export function setupApiStore<A extends typeof api>(
   api: A,
-  extraReducers?: Record<string, any>,
+  extraReducers?: Record<string, Reducer>,
 ) {
   const getStore = () =>
     configureStore({

@@ -1,5 +1,3 @@
-import { useAppSelector } from 'src/app/hooks';
-
 type NewsQueryOptions = {
   providerId?: string | undefined;
   begin?: string;
@@ -10,8 +8,8 @@ type NewsQueryOptions = {
 
 export const setQueryOptions = (
   providerId: string | undefined,
+  date: string,
 ): NewsQueryOptions => {
-  const date = useAppSelector((state) => state.settings.date);
   const options: NewsQueryOptions = {};
   if (providerId) {
     options.providerId = providerId;
