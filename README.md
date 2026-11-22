@@ -14,7 +14,9 @@ Site web regroupant les articles des sites d'actualités tech francophones en te
 
 Installer Postgresql et Node.js (ou utiliser Docker, voir ci-dessous)
 
-Créer le fichier `.env` à partir du `.env.exemple` et modifiez la variable `DATABASE_URL`
+Créer le fichier `.env` à partir du `.env.example` et modifier la variable `DATABASE_URL`
+
+Faire de même avec le `.env` dans `apps/frontend` et modifier la variable `VITE_API_BASEURL`
 
 Installer les dépendances :
 
