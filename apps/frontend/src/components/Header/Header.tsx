@@ -3,7 +3,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from 'src/app/hooks';
-import ActumaticLogo from '../Logo/ActumaticLogo';
+import logoRobot from '../../assets/logo-robot.webp';
+import ActumaticHeaderLogo from '../Logo/ActumaticHeaderLogo';
 import classes from './Header.module.css';
 
 const links = [
@@ -60,7 +61,11 @@ export default function Header() {
             >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown className={classes.svg} size={14} stroke={1.5} />
+                <IconChevronDown
+                  className={classes.svg}
+                  size={14}
+                  stroke={1.5}
+                />
               </Center>
             </a>
           </Menu.Target>
@@ -85,11 +90,24 @@ export default function Header() {
     <header className={classes.header}>
       <Container size={1600}>
         <div className={classes.inner}>
-          <ActumaticLogo />
+          <img
+            src={logoRobot}
+            height={50}
+            className={classes.robotLogo}
+            style={{ position: 'relative', left: 20, bottom: -2 }}
+            alt="website logo"
+          />
+          <ActumaticHeaderLogo />
           <Group gap={5} visibleFrom="sm">
             {items}
           </Group>
-          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" color="white" />
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            size="sm"
+            hiddenFrom="sm"
+            color="white"
+          />
         </div>
       </Container>
     </header>
