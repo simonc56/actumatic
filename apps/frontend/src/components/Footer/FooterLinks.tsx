@@ -5,7 +5,7 @@ import {
   IconBrandX,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
-import ActumaticLogo from '../Logo/ActumaticLogo';
+import ActumaticFlatLogo from '../Logo/ActumaticFlatLogo';
 import classes from './FooterLinks.module.css';
 
 const data = [
@@ -39,7 +39,7 @@ export function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <ActumaticLogo greyscale icon={false} />
+          <ActumaticFlatLogo greyscale icon={false} />
           <Text size="xs" c="dimmed" className={classes.description}>
             Aggrégateur d'actualités numériques et technologiques.
           </Text>
